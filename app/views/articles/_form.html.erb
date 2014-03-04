@@ -1,0 +1,40 @@
+<% action = (article.persisted? ? article_url(article) : articles_url) %>
+<% method = (article.persisted? ? "put" : "post") %>
+<% message = (article.persisted? ? "Update Article" : "Create Article") %>
+
+<form action="<%= action %>" method="post">
+	<input
+		name="_method"
+		type="hidden"
+		value="<%= method %>">
+	
+	<input
+		name="authenticity_token"
+		type="hidden"
+		value="<%= form_authenticity_token %>">
+	
+		<label for="article_title">Title</label>
+		<input
+		  id="article_title"
+			name="article[title]"
+			type="text"
+			value="<%= article.title %>">
+		<br>
+		
+		<label for="article_image">Image URL</label>
+		<input
+			id="article_image"
+			name="article[image]"
+			type="text"
+			value="<%= article.image %>">
+		<br>
+		
+		<label for="article_body">Body</label>
+		<textarea 
+			id="article_body"
+			name="article[body]"/><%= article.body %>
+		</textarea>
+		<br>
+	
+		<input type="submit" value="<%= message %>">
+</form>
