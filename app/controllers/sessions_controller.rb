@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       render json: "Invalid Credentials"
     else
       self.current_user = user
-      redirect_to user_url(user)
+      redirect_to articles_url
     end
   end
   

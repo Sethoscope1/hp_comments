@@ -5,6 +5,13 @@
 <p class="article_body"><%= @article.body %></p>
 
 <%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+
 <%= link_to "Edit Article", edit_article_path(@article) %>
 
-<%= link_to "Return to Articles", articles_path, class: 'article_link' %>
+<%= link_to "Return to Articles", articles_url, class: 'article_link' %>
+
+<h3>Comments</h3>
+	
+	<%= render "comments/form", comment: @comment, article: @article %>
+	
+	<%= render "comments/comments", article: @article %>

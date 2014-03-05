@@ -1,0 +1,36 @@
+<% action = (comment.persisted? ? comment_url(comment) : comments_url) %>
+<% method = (comment.persisted? ? "put" : "post") %>
+<% message = (comment.persisted? ? "Update Comment" : "New Comment")%>
+
+<form action="<%= action %>" method="post">
+	
+	<input
+		name="_method"
+		type="hidden"
+		value="<%= method %>">
+		
+	<input
+		type="hidden"
+		name="authenticity_token"
+		value="<%= form_authenticity_token %>">
+		
+	<input
+		type="hidden"
+		name="comment[article_id]"
+		value="<%= article.id %>">
+		
+	<input
+		type="hidden"
+		name="comment[user_id]"
+		value="<%= current_user.id %>">
+		
+	<label for="comment_body">Comment as <%= current_user.username%>:</label>
+	<br>
+	<textarea
+		id="comment_body"
+		name="comment[body]"
+		value="<%= comment.body %>"
+		placeholder="Start a Conversation"></textarea>
+	<br>
+	<input type="Submit" value="<%= message %>">
+</form>

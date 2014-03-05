@@ -3,7 +3,13 @@ HpComments::Application.routes.draw do
   resources :users, only: [:create, :new, :show]
   resource :session, only: [:create, :destroy, :new]
   
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
+  
+  resources :comments do
+    resources :comments
+  end
   
   root to: "articles#index"
   # The priority is based upon order of creation:
