@@ -14,15 +14,10 @@
 		name="authenticity_token"
 		value="<%= form_authenticity_token %>">
 		
-	<input 
-		type="hidden"
-		name="comment[parent_id]"
-		value="<%= parent_id %>">
-		
 	<input
 		type="hidden"
 		name="comment[article_id]"
-		value="<%= Comment.find(parent_id).article_id %>">
+		value="<%= article.id || Comment.find(comment.parent_id).article_id %>">
 		
 	<input
 		type="hidden"
@@ -38,4 +33,4 @@
 		placeholder="Start a Conversation"></textarea>
 	<br>
 	<input type="Submit" value="<%= message %>">
-</form>_first_form.html.erb
+</form>

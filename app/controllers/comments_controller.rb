@@ -5,11 +5,11 @@ class CommentsController < ApplicationController
   end
   
   def show
-    @comments = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
   
   def new
-   @comment = Comment.new
+   @comment = Comment.new(:parent_id => params[:parent_id])
   end
   
   def edit

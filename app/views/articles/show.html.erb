@@ -10,8 +10,7 @@
 
 <%= link_to "Return to Articles", articles_url, class: 'article_link' %>
 
-<h3>Comments</h3>
 	
-	<%= render "comments/form", comment: @comment, article: @article %>
-	
-	<%= render "comments/comments", article: @article %>
+<%= render partial: "comments/first_form", locals: { comment: @comment, article: @article } %>
+
+<%= render partial: "comments/index", locals: { article: @article } %>

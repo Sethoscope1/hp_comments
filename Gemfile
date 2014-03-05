@@ -9,6 +9,8 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 
 gem 'pg'
 
+gem 'ancestry'
+
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
