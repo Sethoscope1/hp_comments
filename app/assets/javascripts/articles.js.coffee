@@ -5,18 +5,19 @@
 
 app = angular.module("hp_comments", ["ngResource"])
 
-app.factory "Article", ($resource) ->
-	$resource("/articles/:id.json", {id: "@id"}, {update: {method: "PUT"}})
+app.factory "Article", ["$resource", ($resource) ->
+	$resource("/articles/:id.json", {id: "@id"}, {update: {method: "PUT"}})]
 	
-@ArticleCtrl = ($scope, Article) ->
+@ArticleCtrl = ["$scope", "Article", ($scope, Article) ->
 	# Index function
-	$scope.articles = Article.query()
+	$scope.articles = Article.query()]
 	
 	
-app.factory "Comment", ($resource) ->
-	$resource("/comments/:id.json", {id: "@id"}, {update: {method: "PUT"}})
+app.factory "Comment", ["$resource", ($resource) ->
+	$resource("/comments/:id.json", {id: "@id"}, {update: {method: "PUT"}})]
 	
-@CommentCtrl = ($scope, Comment) ->
+@CommentCtrl = ["$scope", "Comment", ($scope, Comment) ->
 	# Index function
-	$scope.comments = Comment.query()
+	$scope.comments = Comment.query()]
+	
 	
