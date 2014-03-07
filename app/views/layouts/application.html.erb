@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="hp_comments">
 <head>
-  <title>HP Comments</title>
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <title>CommentsTest</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -27,7 +27,9 @@
 
 <br>
 
-<%= yield %>
+<div ng-view>
+	<%= yield %>
+</div>
 
 </body>
 </html>

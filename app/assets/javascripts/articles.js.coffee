@@ -1,3 +1,22 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+
+app = angular.module("hp_comments", ["ngResource"])
+
+app.factory "Article", ($resource) ->
+	$resource("/articles/:id.json", {id: "@id"}, {update: {method: "PUT"}})
+	
+@ArticleCtrl = ($scope, Article) ->
+	# Index function
+	$scope.articles = Article.query()
+	
+	
+app.factory "Comment", ($resource) ->
+	$resource("/comments/:id.json", {id: "@id"}, {update: {method: "PUT"}})
+	
+@CommentCtrl = ($scope, Comment) ->
+	# Index function
+	$scope.comments = Comment.query()
+	
