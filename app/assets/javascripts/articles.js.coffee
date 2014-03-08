@@ -17,7 +17,7 @@ app.factory "Comment", ["$resource", ($resource) ->
 	$resource("/comments/:id.json", {id: "@id"}, {update: {method: "PUT"}})]
 	
 @CommentCtrl = ["$scope", "Comment", ($scope, Comment) ->
-	# Index function
 	$scope.comments = Comment.query()]
 	
+
 	

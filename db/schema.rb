@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140305225122) do
+ActiveRecord::Schema.define(:version => 20140307214219) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20140305225122) do
   end
 
   add_index "articles", ["author_id"], :name => "index_articles_on_author_id", :unique => true
+
+  create_table "comment_favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comment_favorites", ["comment_id"], :name => "index_comment_favorites_on_comment_id"
+  add_index "comment_favorites", ["user_id"], :name => "index_comment_favorites_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"

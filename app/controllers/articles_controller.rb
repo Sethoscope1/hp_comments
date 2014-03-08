@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.includes(:comments).all
     
     respond_to do |format|
       format.html

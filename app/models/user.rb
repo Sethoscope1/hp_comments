@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   
   before_validation :ensure_session_token
   
+  has_many :comments
+  has_many :articles
+  
+  has_many :comment_favorites, dependent: :destroy
+  has_many :favorite_comments, through: :comment_favorites, source: :comment
+  
   # attr_accessible :password_digest, :username
   
   def password=(password)

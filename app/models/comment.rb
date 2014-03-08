@@ -7,6 +7,9 @@ class Comment < ActiveRecord::Base
   belongs_to :article
   belongs_to :comment
   
+  has_many :comment_favorites, dependent: :destroy
+  has_many :favorited_by, through: :comment_favorites, source: :user
+  
   validates :article_id, presence: true
   validates :user_id, presence: true
   validates :body, presence: true

@@ -17,10 +17,20 @@ class UsersController < ApplicationController
   end
   
   def show
-    if params.include?(:id)
-      @user = User.find(params[:id])
-    else
-      redirect_to user_url(current_user)
+    @user = User.find(current_user.id)
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @user}
+    end
+  end
+  
+  def index
+    @user = User.find(current_user.id)
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @user}
     end
   end
   

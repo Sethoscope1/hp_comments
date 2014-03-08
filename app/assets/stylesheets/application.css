@@ -1,9 +1,21 @@
-h1, h2, h3, h4, h5, h6, p, a, span, div {
+
+
+/*h1, h2, h3, h4, h5, h6, p, a, span, div, ul, li {
 	padding: 0;
 	margin: 0;
 	border: 0;
 	
 	vertical-align: baseline;
+}
+
+.group {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+ul {
+	list-style: none;
 }
 
 body {
@@ -23,6 +35,19 @@ p {
 	margin-left: 20px;
 }
 
+li img.photo {
+	width: 500px;
+}
+
+.article-index {
+	width: 500px;
+	margin: auto;
+}
+
+.article-preview {
+	border-bottom: 1px solid lightgray;
+	padding: 10px 0;
+}*/
 /*gt
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -36,3 +61,29 @@ p {
  *= require_self
  *= require_tree .
  */
+
+.comment {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid lightblue;
+}
+
+.nested_comment {
+
+	margin-left: 10px;
+}
+
+.nested_comment .comment {
+
+	background: yellow;
+	border: none;
+	margin-top: 0;
+}
+
+.nested_comment .nested_comment .comment {
+	background: orange;
+}
+
+.nested_comment .nested_comment .nested_comment .comment{
+	background: red;
+}
