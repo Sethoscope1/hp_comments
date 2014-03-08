@@ -62,28 +62,40 @@ li img.photo {
  *= require_tree .
  */
 
+/*
+ *= require bootstrap_and_overrides
+ */
+
+/* Your stylesheets goes here... */
+
+
+
 .comment {
 	margin-top: 10px;
 	padding: 10px;
 	border: 1px solid lightblue;
+	width: 300px;
 }
 
 .nested_comment {
-
 	margin-left: 10px;
 }
 
 .nested_comment .comment {
 
-	background: yellow;
+	background: #3498db;
 	border: none;
 	margin-top: 0;
 }
 
 .nested_comment .nested_comment .comment {
-	background: orange;
+	background: #2980b9;
 }
 
 .nested_comment .nested_comment .nested_comment .comment{
-	background: red;
+	background: #1462a4;
+}
+
+.likes {
+	float: right;
 }
