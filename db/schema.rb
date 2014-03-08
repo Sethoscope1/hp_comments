@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140307214219) do
+ActiveRecord::Schema.define(:version => 20140308183408) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20140307214219) do
     t.integer  "comment_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "value"
   end
 
   add_index "comment_favorites", ["comment_id"], :name => "index_comment_favorites_on_comment_id"
