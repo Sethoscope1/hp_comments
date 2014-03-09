@@ -26,8 +26,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    
-    @users = User.all
+    @users = current_user
     respond_to do |format|
       format.html
       format.json { render json: @users}

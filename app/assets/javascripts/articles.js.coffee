@@ -13,7 +13,6 @@ app.factory "Article", ["$resource", ($resource) ->
 	# Index function
 	$scope.articles = Article.query()]
 	
-	
 app.factory "Comment", ["$resource", ($resource) ->
 	$resource("/comments/:id.json", {id: "@id"}, {update: {method: "PUT"}})]
 	
@@ -21,9 +20,8 @@ app.factory "Comment", ["$resource", ($resource) ->
 	$scope.comments = Comment.query()]
 	
 app.factory "User", ["$resource", ($resource) ->
-	$resource("/users/:id.json", {id: "@id"}, {update: {method: "PUT"}, current: {method: "GET"}})]
+	$resource("/users/:id.json", {id: "@id"}, {update: {method: "PUT"}, current: {method: "GET", isArray: false}})]
 	
 @UserCtrl = ["$scope", "User", ($scope, User) ->
-  $scope.users = User.query()
-  $scope.current = User.current({action: "current"})]
+  $scope.current = User.current()]
 	

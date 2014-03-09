@@ -37,8 +37,7 @@
 			
 			<div><h4>ANGULAR USER TEST</h4>
 				<div ng-controller="UserCtrl" class="user-info">
-					<span><h3>Users {{ current }}</h3></span>
-					
+					<span><h3>Users {{ current.user }}</h3></span>
 					<li ng-repeat="user in users" class="users-test">
 						<span>{{ user.username }}</span>
 					</li>
