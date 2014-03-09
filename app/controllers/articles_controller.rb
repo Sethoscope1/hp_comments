@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.includes(:comments).all
-    
     respond_to do |format|
       format.html
       format.json { render json: @articles}

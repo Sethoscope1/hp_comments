@@ -11,6 +11,8 @@ gem 'pg'
 
 gem 'ancestry'
 
+gem 'merit'
+
 gem 'angularjs-rails'
 
 gem 'uglifier', '>= 1.0.3'

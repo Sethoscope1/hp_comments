@@ -1,14 +1,18 @@
-<img src=<%= @article.image %>>
 
 <h1 class="article_title"><%= @article.title %></h1>
 
+<img src=<%= @article.image %>>
+
 <p class="article_body"><%= @article.body %></p>
 
-<%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+<% if @article.id == current_user.id %>
+	<%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
 
-<%= link_to "Edit Article", edit_article_path(@article) %>
+	<%= link_to "Edit Article", edit_article_path(@article) %>
 
-<%= link_to "Return to Articles", articles_url, class: 'article_link' %>
+<% end %>
+
+	<%= link_to "Return to Articles", articles_url, class: 'article_link' %>
 
 	
 <%= render partial: "comments/first_form", locals: { comment: @comment, article: @article } %>

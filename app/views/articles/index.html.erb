@@ -1,38 +1,18 @@
 
 
-<div ng-controller="ArticleCtrl"  class="user-info">
-		<h2>WHAT</h2>
-		<h2>{{ user.name }}</h2>
-</div>
-
 <div ng-controller="ArticleCtrl" class="article-index">
 	<h2>ARTICLES</h2>
-	<ul >
+	<div id="articles-list">
 		<li ng-repeat="article in articles" class="article-preview">
-			{{ article.title }}
-			{{ article.comments}}
-			<br>
+			<h3>{{ article.title }}</h3>
 			<img ng-src="{{article.image}}" class="photo">
 			<br>
-			<span>Comments ({{article.comments.length}})<span>
+			<span>Comments ({{ article.comments.length }})<span>
 
 		</li>
-	</ul>
+	</div>
 </div>
 
-<!-- <div ng-controller="CommentCtrl">
-	<ul>
-		<li ng-repeat="comment in comments">
-			{{ comment.body }}
-		</li>
-	</ul>
-</div> -->
-
-<input ng-model="testing" type=text placeholder="Do it">
-{{testing}}
-
-
-<ul>
 <% @articles.each do |article| %>
 	<li>
 		<%= link_to article.title, article_path(article), class: 'article_link' %>	
@@ -41,4 +21,3 @@
 
 
 	<li><%= link_to "Create a New Article", new_article_path, class: 'new_article_link' %></li>
-</ul>

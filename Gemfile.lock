@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.14)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    ambry (0.3.1)
     ancestry (2.0.0)
       activerecord (>= 3.0.0)
     angularjs-rails (1.2.14)
@@ -71,6 +72,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    merit (2.0.0)
+      ambry (~> 0.3.0)
     mime-types (1.25.1)
     multi_json (1.8.4)
     pg (0.17.1)
@@ -142,6 +145,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   less-rails-fontawesome
+  merit
   pg
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)

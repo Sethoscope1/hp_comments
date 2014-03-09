@@ -1,6 +1,11 @@
 HpComments::Application.routes.draw do
   
-  resources :users, only: [:create, :new, :show]
+  resources :users, only: [:create, :new, :show, :index] do
+    collection do
+      get :current
+    end
+  end
+  
   resource :session, only: [:create, :destroy, :new]
   
   resources :articles do
@@ -8,6 +13,11 @@ HpComments::Application.routes.draw do
   end
   
   resources :comments do
+    member do
+      post 'upvote'
+      post 'downvote'
+    end
+    
     resources :comments
   end
   

@@ -1,6 +1,14 @@
 <div class="comment">
 	<div class="comment-username">
-		<strong><%= comment.user.username %></strong><span class="flair">( flair goes here )</span><span class="likes"><i class="fa fa-arrow-circle-up"></i><i class="fa fa-arrow-circle-down"></i> ( count )</span>
+		<strong><%= comment.user.username %></strong>
+		<span class="flair">( flair goes here )</span>
+		<span class="likes">
+			<div class="circle "><%= get_value(comment) %></div>
+		</span>
+		<span class="buttons">
+			<%= button_to "upvote", upvote_comment_path(comment), method: :post %>
+			<%= button_to raw("downvote"), downvote_comment_path(comment), method: :post %>
+		</span>
 	</div>
 
 	<p class="comment-body"><%= link_to comment.body, comment_url(comment) %></p>

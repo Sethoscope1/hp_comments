@@ -5,6 +5,7 @@
 
 app = angular.module("hp_comments", ["ngResource"])
 
+
 app.factory "Article", ["$resource", ($resource) ->
 	$resource("/articles/:id.json", {id: "@id"}, {update: {method: "PUT"}})]
 	
@@ -19,5 +20,10 @@ app.factory "Comment", ["$resource", ($resource) ->
 @CommentCtrl = ["$scope", "Comment", ($scope, Comment) ->
 	$scope.comments = Comment.query()]
 	
-
+app.factory "User", ["$resource", ($resource) ->
+	$resource("/users/:id.json", {id: "@id"}, {update: {method: "PUT"}, current: {method: "GET"}})]
+	
+@UserCtrl = ["$scope", "User", ($scope, User) ->
+  $scope.users = User.query()
+  $scope.current = User.current({action: "current"})]
 	

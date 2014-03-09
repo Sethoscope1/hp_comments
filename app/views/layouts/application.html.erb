@@ -9,36 +9,78 @@
 </head>
 <body>
 
-<% if !current_user.nil? %>
-	<ul>
-		<li>Logged in as: <%= current_user.username %></li>
-		<li><%= button_to "Logout", session_url, method: :delete %></li>
-	</ul>
-<% end %>
-
-<% if !flash.notice.nil? %>
-	<p><%= flash.notice %></p>
-<% end %>
-
-<% if flash[:error] %>
-	<% flash[:error].each do |message| %>
-		<%= message %>
-	<% end %>
-<% end %>
-
-<br>
-
 <div class="container" ng-view>
 	
 	<div class="row">
-		<div class="span3 user-info">
-			<h3>username</h3>
-		</div>
+		<div class="span3" id="user-info">
+			<h2>USER INFO</h2>
+			<% if !current_user.nil? %>
+				<li>Logged in as: <%= current_user.username %></li>
+				<li><%= button_to "Logout", session_url, method: :delete %></li>
+			<% end %>
 
-		<div class="span9">
+			<% if !flash.notice.nil? %>
+				<p><%= flash.notice %></p>
+			<% end %>
+
+			<% if flash[:error] %>
+				<% flash[:error].each do |message| %>
+					<%= message %>
+				<% end %>
+			<% end %>
+			
+			<% if current_user %>
+				<% current_user.badges.each do |badge| %>
+					<li><%= badge.name %></li>
+				<% end %>
+			<% end %>
+			
+			<div><h4>ANGULAR USER TEST</h4>
+				<div ng-controller="UserCtrl" class="user-info">
+					<span><h3>Users {{ current }}</h3></span>
+					
+					<li ng-repeat="user in users" class="users-test">
+						<span>{{ user.username }}</span>
+					</li>
+					<div>
+						<input type="text" ng-model="newEntry.name"></input>
+						<h4>{{ newEntry.name }}</h4>
+						<h3>Current User: {{ current.username }}</h3>
+					</div>
+				
+					
+				</div>
+			
+			</div>
+			
+			
+			
+			<div ng-controller="ArticleCtrl" class="article-index">
+				<h2>ARTICLES</h2>
+				<div id="articles-list">
+					<li ng-repeat="article in articles" class="article-preview">
+						<h3>{{ article.title }}</h3>
+						<img ng-src="{{article.image}}" class="photo">
+						<br>
+						<span>Comments ({{ article.comments }})<span>
+
+					</li>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+
+		<div class="span5" id="main">
 			<%= yield %>
 		</div>
-	
+		
+		<div class="span3" id="achievements">
+			<h2>ACHIEVEMENT CHEAT SHEET</h2>
+			
+			
+		</div>
 	</div>
 </div>
 

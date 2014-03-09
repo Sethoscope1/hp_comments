@@ -45,6 +45,26 @@ class CommentsController < ApplicationController
     end
   end
   
+  def upvote
+    @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]
+    if @comment_favorite
+      @comment_favorite.update_attributes(value: (@comment_favorite.value == 1 ? 0 : 1))
+    else
+      CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: 1)
+    end
+    redirect_to article_url(Comment.find(params[:id]).article)
+  end
+  
+  def downvote
+    @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]
+    if @comment_favorite
+      @comment_favorite.update_attributes(value: (@comment_favorite.value == -1 ? 0 : -1))
+    else
+      CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: -1)
+    end
+    redirect_to article_url(Comment.find(params[:id]).article)
+  end
+  
   def destroy
     @comment = Comment.find(params[:id])
     @article = @comment.article

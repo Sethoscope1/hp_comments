@@ -1,53 +1,4 @@
 
-
-/*h1, h2, h3, h4, h5, h6, p, a, span, div, ul, li {
-	padding: 0;
-	margin: 0;
-	border: 0;
-	
-	vertical-align: baseline;
-}
-
-.group {
-	content: "";
-	clear: both;
-	display: table;
-}
-
-ul {
-	list-style: none;
-}
-
-body {
-	font-family: Helvetica, sans-serif;
-}
-
-p {
-	font-size: 12px;
-}
-
-.timestamp {
-	font-size: 10px;
-	color: gray;
-}
-
-.nested_comment {
-	margin-left: 20px;
-}
-
-li img.photo {
-	width: 500px;
-}
-
-.article-index {
-	width: 500px;
-	margin: auto;
-}
-
-.article-preview {
-	border-bottom: 1px solid lightgray;
-	padding: 10px 0;
-}*/
 /*gt
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -58,44 +9,93 @@ li img.photo {
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap_and_overrides
  *= require_self
  *= require_tree .
  */
 
 /*
- *= require bootstrap_and_overrides
  */
 
 /* Your stylesheets goes here... */
 
+#main ul, #achievements ul, #user-info ul {
+	list-style-type: none;
+	margin-left: none !important;
+}
+
+#main li, #achievements li, #user-info li {
+	list-style: none;
+}
+
+.container {
+	margin-top: 60px;
+}
+
+#user-info, #achievements {
+	padding: 10px;
+}
+#user-info {
+	background-color: #3498db;
+}
+
+#main {
+	border-top: 4px solid #e74c3c;
+}
+
+#achievements {
+	background-color: #bdc3c7;
+	overflow: hidden;
+}
 
 
 .comment {
 	margin-top: 10px;
 	padding: 10px;
-	border: 1px solid lightblue;
+	border: 1px solid #3498db;
 	width: 300px;
 }
 
 .nested_comment {
-	margin-left: 10px;
+	margin-left: 15px;
 }
 
 .nested_comment .comment {
-
-	background: #3498db;
-	border: none;
+	background-color: #EBF5FB;
 	margin-top: 0;
+	border: none;
+	border-bottom: 1px solid #3498db;
+/*	border-right: 1px solid #3498db;*/
+/*	background-image: linear-gradient(#EBF5FB, white);*/
 }
 
-.nested_comment .nested_comment .comment {
-	background: #2980b9;
+/*.nested_comment .comment:last-child {
+	border-bottom: none;
+}*/
+
+.nested_comment .nested_comment .comment{
+	background-color: #D6EAF8;
+/*	background-image: linear-gradient(#D6EAF8, white);*/
 }
 
 .nested_comment .nested_comment .nested_comment .comment{
-	background: #1462a4;
+	background-color: #C2E0F4;
+/*	background-image: linear-gradient(#C2E0F4, white);*/
+}
+
+.nested_comment .nested_comment .nested_comment .nested_comment .comment{
+	background-color: #AED6F1;
+/*	background-image: linear-gradient(#C2E0F4, white);*/
 }
 
 .likes {
 	float: right;
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	border: 1px solid lightblue;
+	text-align: center;
 }

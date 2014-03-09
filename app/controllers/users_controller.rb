@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     
     if @user.save
       self.current_user = @user
-      redirect_to user_url(@user)
+      redirect_to articles_url
     else
       render :json => @user.errors.full_messages
     end
@@ -26,10 +26,19 @@ class UsersController < ApplicationController
   end
   
   def index
-    @user = User.find(current_user.id)
     
+    @users = User.all
     respond_to do |format|
       format.html
+      format.json { render json: @users}
+    end
+  end
+  
+  def current
+    @user = current_user
+    
+    respond_to do |format|
+      format.html { render json: @user}
       format.json { render json: @user}
     end
   end

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_merit
+
   attr_accessible :username, :password
   attr_reader :password
   
