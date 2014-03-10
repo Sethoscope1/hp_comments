@@ -160,15 +160,3 @@ i {
 .badges {
 	padding: 0 20px 20px 20px;
 }
-
-.bronze:before {
-	content: raw("<i class=\"fa fa-star-o\">")
-}
-
-.silver:before {
-	<i class="fa fa-star-half-o"></i>
-}
-
-.gold:before {
-	<i class="fa fa-star"></i>
-}
