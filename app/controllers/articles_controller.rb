@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :require_current_user!
+  
   def index
     @articles = Article.includes(:comments).all
     respond_to do |format|

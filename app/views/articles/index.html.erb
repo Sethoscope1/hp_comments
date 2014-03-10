@@ -1,6 +1,6 @@
 
 
-<div ng-controller="ArticleCtrl" class="article-index">
+<!-- <div ng-controller="ArticleCtrl" class="article-index">
 	<h2>ARTICLES</h2>
 	<div id="articles-list">
 		<li ng-repeat="article in articles" class="article-preview">
@@ -11,13 +11,26 @@
 
 		</li>
 	</div>
-</div>
+</div> -->
 
-<% @articles.each do |article| %>
-	<li>
-		<%= link_to article.title, article_path(article), class: 'article_link' %>	
-	</li>
-<% end %>
+<div class="articles">
+	<h1>ARTICLES</h1>
 
+	<% @articles.each do |article| %>
+
+		<div class="article">
+			<a href="<%= article_url(article) %>">
+				<img src="<%= article.image %>">
+				<h2><%= article.title %></h2>
+			</a>
+			<a href="<%= article_url(article)%>#comments">
+				<p>Comments: <%= article.comments.count == 0 ? "No Comments" : article.comments.count %></p>
+			</a>
+		</div>
+		
+	<% end %>
+
+	<hr>
 
 	<li><%= link_to "Create a New Article", new_article_path, class: 'new_article_link' %></li>
+</div>

@@ -1,0 +1,37 @@
+<div class="welcome">
+	<% if !current_user.nil? %>
+		<h2>Welcome</h2>
+		<h3><%= current_user.username %></h3>
+		<%= button_to "Logout", session_url, method: :delete %>
+	<% else %>
+		<h2>LOG IN</h2>
+	<% end %>
+</div>
+
+<div class="achievements">
+	
+	<div class="badges">
+
+		<% if !flash.notice.nil? %>
+			<h3>Notices:</h3>
+			<%= flash.notice %></p>
+		<% end %>
+
+		<% if flash[:error] %>
+			<h3>Errors</h3>
+			<% flash[:error].each do |message| %>
+				<%= message %>
+			<% end %>
+		<% end %>
+	
+		<h3>Achievements</h3>
+	
+		<% if current_user %>
+			<% current_user.badges.each do |badge| %>
+				<li><i class="fa fa-star-half-o"></i><%= badge.name %></li>
+			<% end %>
+		<% else %>
+				<li>You have achieved nothing</li>
+		<% end %>
+	</div>
+</div>

@@ -3,7 +3,13 @@
 		<strong><%= comment.user.username %></strong>
 		<span class="flair">( flair goes here )</span>
 		<span class="likes">
-			<div class="circle "><%= get_value(comment) %></div>
+			<div class="circle ">
+				<div class="middle">
+					<%= get_value(comment) %>
+				</div>
+			</div>
+			<i class="fa fa-arrow-circle-up"></i>
+			<i class="fa fa-arrow-circle-down"></i>
 		</span>
 		<span class="buttons">
 			<%= button_to "upvote", upvote_comment_path(comment), method: :post %>

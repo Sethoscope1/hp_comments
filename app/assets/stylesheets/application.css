@@ -19,6 +19,14 @@
 
 /* Your stylesheets goes here... */
 
+@font-face {
+	font-family: "OstrichSans";
+	src: url("/fonts/ostrich-sans-bold.ttf");
+	font-weight: bold;
+}
+
+
+
 #main ul, #achievements ul, #user-info ul {
 	list-style-type: none;
 	margin-left: none !important;
@@ -31,8 +39,7 @@
 .container {
 	margin-top: 60px;
 }
-
-#user-info, #achievements {
+#achievements {
 	padding: 10px;
 }
 #user-info {
@@ -46,6 +53,28 @@
 #achievements {
 	background-color: #bdc3c7;
 	overflow: hidden;
+}
+
+.welcome {
+	background-color: #FF0041;
+	display: block;
+	padding: 20px 0;
+}
+
+.welcome h2, .achievements h3 {
+	font-family: "OstrichSans";
+	font-style: italics;
+	font-size: 48px;
+	color: white;
+	text-align: center;
+}
+
+.achievements h3 {
+	font-size: 36px;
+}
+
+.achievemnts {
+	color: white;
 }
 
 
@@ -73,6 +102,23 @@
 	border-bottom: none;
 }*/
 
+.article {
+	border-bottom: 1px solid lightgrey;
+	margin-bottom: 15px;
+}
+
+.articles a { 
+	color: black;
+}
+
+.articles h1 {
+	text-align: center;
+}
+
+.articles h2 {
+	margin: 0;
+}
+
 .nested_comment .nested_comment .comment{
 	background-color: #D6EAF8;
 /*	background-image: linear-gradient(#D6EAF8, white);*/
@@ -90,12 +136,39 @@
 
 .likes {
 	float: right;
+	text-align: center;
 }
 
 .circle {
-	width: 20px;
-	height: 20px;
-	border-radius: 10px;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background-color: white;
 	border: 1px solid lightblue;
 	text-align: center;
+	vertical-align: middle;
+}
+
+.middle {
+	padding: 4px;
+}
+
+i {
+	margin-right: 8px;
+}
+
+.badges {
+	padding: 0 20px 20px 20px;
+}
+
+.bronze:before {
+	content: raw("<i class=\"fa fa-star-o\">")
+}
+
+.silver:before {
+	<i class="fa fa-star-half-o"></i>
+}
+
+.gold:before {
+	<i class="fa fa-star"></i>
 }
