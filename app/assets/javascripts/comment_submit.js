@@ -43,7 +43,7 @@ $(document).ready(function(){
 				$reply_form.addClass("hidden")
 				var parentClass = $(that).attr("class")
 				reply = format_comment(data)
-				$(that).closest(".comment-pair").append(reply.addClass("nested_comment"));
+				$(that).closest(".comment-pair").append($("<div>", {class: nested_comment}).append(reply))
 			}
 		})
 	})
