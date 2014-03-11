@@ -1,19 +1,15 @@
-<div class="comment">
+<div class="comment" data-comment-id="<%= comment.id %>">
 	<div class="comment-username">
-		<strong><%= comment.user.username %></strong>
+		<%= comment.user.username %>
 		<span class="flair">( flair goes here )</span>
 		<span class="likes">
 			<div class="circle ">
-				<div class="middle">
+				<div class="vote-count">
 					<%= get_value(comment) %>
 				</div>
 			</div>
-			<i class="fa fa-arrow-circle-up"></i>
-			<i class="fa fa-arrow-circle-down"></i>
-		</span>
-		<span class="buttons">
-			<%= button_to "upvote", upvote_comment_path(comment), method: :post %>
-			<%= button_to raw("downvote"), downvote_comment_path(comment), method: :post %>
+			<i class="upvote fa fa-arrow-circle-up <%= upvoted?(comment) ? "highlighted" : "" %>"></i>
+			<i class="downvote fa fa-arrow-circle-down <%= downvoted?(comment) ? "highlighted" : "" %>"></i>
 		</span>
 	</div>
 
@@ -21,7 +17,10 @@
 
 	<span class="timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
 	<span class="controls">
-		<%= link_to "Delete", comment_url(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+		<% if comment.user_id == current_user.id %>
+			<%= link_to "Delete", comment_url(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+		<% end %>
+		
 		<%= link_to "Reply", new_comment_url(parent_id: comment) %>
 	</span>
 </div>

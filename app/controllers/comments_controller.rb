@@ -24,10 +24,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
-    
     if @comment.save
-      flash.notice = "Comment Created"
-      redirect_to article_url(@comment.article_id)
+      render json: @comment
     else
       flash[:error] = @comment.errors.full_messages
       flash.notice = "Couldn't Create Comment"

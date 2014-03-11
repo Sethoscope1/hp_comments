@@ -14,7 +14,9 @@
 
 	<%= link_to "Return to Articles", articles_url, class: 'article_link' %>
 
-<a name="comments">
-<%= render partial: "comments/first_form", locals: { comment: @comment, article: @article } %>
+<div name="comments">
+	<%= render partial: "comments/first_form", locals: { comment: @comment, article: @article } %>
 
-<%= render partial: "comments/index", locals: { article: @article } %>
+	<%= render partial: "comments/index", locals: { article: @article } %>
+	
+</div>

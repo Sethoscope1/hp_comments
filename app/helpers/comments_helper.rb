@@ -9,4 +9,18 @@ module CommentsHelper
   def get_value(comment)
     CommentFavorite.where(comment_id: comment.id).map { |comment_fav| comment_fav.value.to_i }.sum
   end
+  
+  def upvoted?(comment)
+    favorite = CommentFavorite.where(user_id: current_user.id, comment_id: comment.id)[0]
+    return false if favorite.nil? || favorite.value != 1
+    
+    true
+  end
+  
+  def downvoted?(comment)
+    favorite = CommentFavorite.where(user_id: current_user.id, comment_id: comment.id)[0]
+    return false if favorite.nil? || favorite.value != -1
+    
+    true
+  end
 end

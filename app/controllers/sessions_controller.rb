@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     )
     
     if user.nil?
-      render json: "Invalid Credentials"
+      flash[:error] = ["Invalid Credentials"]
+      redirect_to new_session_url
     else
       self.current_user = user
       redirect_to articles_url

@@ -2,7 +2,7 @@
 <% method = (comment.persisted? ? "put" : "post") %>
 <% message = (comment.persisted? ? "Update Comment" : "New Comment")%>
 
-<form action="<%= action %>" method="post">
+<form action="<%= action %>" method="post" class="comment" id="first-comment">
 	
 	<input
 		name="_method"
@@ -21,6 +21,11 @@
 		
 	<input
 		type="hidden"
+		name="user_name"
+		value="<%= current_user.username %>">
+		
+	<input
+		type="hidden"
 		name="comment[user_id]"
 		value="<%= current_user.id %>">
 		
@@ -29,8 +34,7 @@
 	<textarea
 		id="comment_body"
 		name="comment[body]"
-		value="<%= comment.body %>"
-		placeholder="Start a Conversation"></textarea>
+		placeholder="Start a Conversation"><%= comment.body %></textarea>
 	<br>
 	<input type="Submit" value="<%= message %>">
 </form>

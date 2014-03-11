@@ -24,4 +24,4 @@ app.factory "User", ["$resource", ($resource) ->
 	
 @UserCtrl = ["$scope", "User", ($scope, User) ->
   $scope.current = User.current()]
-	
+

@@ -35,7 +35,9 @@
 #main li, #achievements li, #user-info li {
 	list-style: none;
 }
-
+.highlighted {
+	color: red;
+}
 .container {
 	margin-top: 60px;
 }
@@ -102,6 +104,18 @@
 	border-bottom: none;
 }*/
 
+.comment i {
+	color: lightgray;
+}
+
+.comment i.highlighted.fa-arrow-circle-down {
+	color: #3498db;
+}
+
+.comment i.highlighted.fa-arrow-circle-up {
+	color: #ff0041;
+}
+
 .article {
 	border-bottom: 1px solid lightgrey;
 	margin-bottom: 15px;
@@ -139,6 +153,14 @@
 	text-align: center;
 }
 
+.controls {
+	float: right;
+}
+
+.contols a {
+	padding: 5px;
+}
+
 .circle {
 	width: 30px;
 	height: 30px;
@@ -149,7 +171,7 @@
 	vertical-align: middle;
 }
 
-.middle {
+.vote-count {
 	padding: 4px;
 }
 
