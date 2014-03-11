@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   end
   
   def new
-   @comment = Comment.new(:parent_id => params[:parent_id])
+    @comment = Comment.new(:parent_id => params[:parent_id])
   end
   
   def edit
@@ -27,9 +27,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment
     else
-      flash[:error] = @comment.errors.full_messages
-      flash.notice = "Couldn't Create Comment"
-      redirect_to article_url(@comment.article_id)
+      render json: @comment.to_json, status: :unprocessable_entity
     end
   end
   
@@ -50,25 +48,27 @@ class CommentsController < ApplicationController
     else
       CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: 1)
     end
-    redirect_to article_url(Comment.find(params[:id]).article)
+    render json: @comment_favorite
   end
   
   def downvote
     @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]
     if @comment_favorite
       @comment_favorite.update_attributes(value: (@comment_favorite.value == -1 ? 0 : -1))
+      render json: @comment_favorite
     else
-      CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: -1)
+      @comment_favorite = CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: -1)
+      render json: @comment_favorite
     end
-    redirect_to article_url(Comment.find(params[:id]).article)
   end
   
   def destroy
     @comment = Comment.find(params[:id])
     @article = @comment.article
-    @comment.destroy
-    flash.notice = "Comment destroyed!"
-    
-    redirect_to article_url(@article)
+    if @comment.destroy
+      render json: @comment
+    else
+      render json: @comment.to_json, status: :unprocessable_entity
+    end
   end
 end

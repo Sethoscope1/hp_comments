@@ -49,8 +49,19 @@ end
     custom_fields: { image: "#" }      
   }, {
     id: 4, 
-    name: "Controversy"
-  }
+    name: "Baby Booster!",
+    custom_fields: { image: "#"}
+  }, {
+    id: 5, 
+    name: "Popular Poster",
+    custom_fields: { image: "#"},
+    description: "Write a post with a score of 5"
+  }, {
+    id: 6,
+    name: "Controversy",
+    custom_fields: { image: "#"},
+    description: "Write a post with 5 upvotes and 5 downvotes!"  
+    }
 ].each do |badge_attrs|
   Merit::Badge.create!(badge_attrs)
 end

@@ -1,31 +1,75 @@
 $(document).ready(function(){
 	
+	// ADDING TOP LEVEL COMMENT
+	
 	var $first = $("#first-comment");
 	var $comments = $("#comments-index");
 	var article = $('[name="comment[article_id]"]').val();
 	var name = $('[name="user_name"]').val();
 	
 	$first.on("submit", function(event){
-		formData = $(this).serialize();
 		event.preventDefault();
+		formData = $(this).serialize();
 
 		$.ajax({
 			url: "/comments/",
 			type: "POST",
 			data: formData,
 			success: function(data) {
-				$comments.prepend("WE DID IT");
 				$comments.prepend(format_comment(data));
 			}
 		})
 	})
 	
-	var format_comment = function(data) {
+	// ADDING COMMENT REPLY
+	
+	$comments.on("click", ".reply", function(event){
+		event.preventDefault();
+		var $reply_form = $(this).closest(".comment-pair").find(".reply-form")
+		$reply_form.toggleClass("hidden");
+	})
+	
+	$comments.on("submit", ".comment-reply", function(event){
+		event.preventDefault();
+		var $reply_form = $(this).closest(".comment-pair").find(".reply-form")
+		formData = $(this).serialize();
+		var that = this;
 		
-		var comments_url = "http://localhost:3000/comments/"
+		$.ajax({
+			url: "/comments/",
+			type: "POST",
+			data: formData,
+			success: function(data) {
+				$reply_form.addClass("hidden")
+				var parentClass = $(that).attr("class")
+				reply = format_comment(data)
+				$(that).closest(".comment-pair").append(reply.addClass("nested_comment"));
+			}
+		})
+	})
+	
+	$comments.on("click", ".delete", function(event){
+		console.log("HUH?")
+		event.preventDefault();
+		var id = $(this).closest("comment").attr("id");
+		console.log(id);
+
+		// $.ajax({
+		// 	url: "/comments/" + id,
+		// 	type: "DELETE",
+		// 	success: function(data) {
+		// 		console.log("DELETED")
+		// 		$thisComment.delete();
+		// 	}
+		// })
+	})
+	
+	
+	var format_comment = function(data) {
+		var comments_url = "/comments/"
 		
 		console.log(data);
-		var comment = $("<div>", {class: "comment"})
+		var comment = $("<div>", {class: "comment group"})
 			.attr("data-comment-id", data["id"])
 			
 			console.log(data["id"])
@@ -35,23 +79,23 @@ $(document).ready(function(){
 				var likes = $("<span>", {class: "likes"});
 					var circle = $("<div>", {class: "circle"})
 						var votes = $("<div>", {class: "vote-count"}).html(0)
-					var up = $("<i>", {class: "upvote fa fa-arrow-circle-up"}) 
-					var down = $("<i>", {class: "downvote fa fa-arrow-circle-down"})
+					var arrows = $("<div>", {class: "votes group"})
+						var up = $("<i>", {class: "upvote fa fa-arrow-circle-up"}) 
+						var down = $("<i>", {class: "downvote fa fa-arrow-circle-down"})
 					
 			var body = $("<p>", {class: "comment-body"});
 				var link = $("<a>", {href: comments_url + data["id"]}).html(data["body"])
 			var time = $("<span>", {class: "timestamp"}).html("Posted moments ago");
 			var controls = $("<span>", {class: "controls"});
-				var del = $("<a>", {href: comments_url + data["id"], "data-confirm": "Are you sure?", "data-method": "delete", rel: "nofollow"}).html("Delete")
+				var del = $("<a>", {href: "#", class: "delete"}).html("Delete")
 				var reply = $("<a>", {href: comments_url + "new?parent_id=" + data["id"]}).html("Reply")
 
-		var user_info = username.append(likes.append(circle.append(votes), up, down), flair);
+		var user_info = username.append(flair, likes.append(circle.append(votes), arrows.append(up, down)));
 		var controls_info = controls.append(del, reply);
 		
 		return comment.append(user_info, body.append(link), time, controls_info)
 	};
 	
-	$comments.append(format_comment("cheese"));
 
 	
 	

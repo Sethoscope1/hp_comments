@@ -12,12 +12,13 @@ $(document).ready(function(){
 	/////--- Comment ---/////
 	
 	/// UPVOTE ///
-	var $comment = $(".comment")
-	
+	var $comments = $("#comments-index")
 	var $upvote = $(".upvote")
 	
-	$upvote.on("click", function(event){
+	$comments.on("click", ".upvote", function(event){
 		event.preventDefault();
+		
+		console.log("click")
 		
 		var $comment = $(this).closest(".comment")
 		var comment_id = $comment.data("comment-id")
@@ -41,7 +42,10 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url: "/comments/" + comment_id + "/upvote",
-			type: "POST"
+			type: "POST",
+			success: function(data){
+				console.log(data)
+			}
 		})
 		
 	})
@@ -51,7 +55,7 @@ $(document).ready(function(){
 	
 	var $downvote = $(".downvote")
 	
-	$downvote.on("click", function(event){
+	$comments.on("click", ".downvote", function(event){
 		event.preventDefault();
 		
 		var $comment = $(this).closest(".comment")
@@ -74,8 +78,12 @@ $(document).ready(function(){
 		$comment.find(".upvote").removeClass("highlighted")
 		$.ajax({
 			url: "/comments/" + comment_id + "/downvote",
-			type: "POST"
+			type: "POST",
+			success: function(data){
+				console.log(data)
+			}
 		})
 		
 	})
+	
 });

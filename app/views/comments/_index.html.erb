@@ -2,6 +2,8 @@
 <h3>Comments:</h3>
 
 <div id="comments-index">
+
 	<%= nested_comments article.comments.arrange(:order => :created_at) %>
+
 </div>
 

@@ -1,26 +1,65 @@
-<div class="comment" data-comment-id="<%= comment.id %>">
-	<div class="comment-username">
-		<%= comment.user.username %>
-		<span class="flair">( flair goes here )</span>
-		<span class="likes">
-			<div class="circle ">
-				<div class="vote-count">
-					<%= get_value(comment) %>
+<div class="comment-pair">
+	<div class="comment group" data-comment-id="<%= comment.id %>">
+		<div class="comment-username">
+			<%= comment.user.username %>
+			<span class="flair">( flair goes here )</span>
+			<span class="likes">
+				<div class="circle ">
+					<div class="vote-count">
+						<%= get_value(comment) %>
+					</div>
 				</div>
-			</div>
-			<i class="upvote fa fa-arrow-circle-up <%= upvoted?(comment) ? "highlighted" : "" %>"></i>
-			<i class="downvote fa fa-arrow-circle-down <%= downvoted?(comment) ? "highlighted" : "" %>"></i>
+				<div class="votes group">
+					<i class="upvote fa fa-arrow-circle-up <%= upvoted?(comment) ? "highlighted" : "" %>"></i>
+					<i class="downvote fa fa-arrow-circle-down <%= downvoted?(comment) ? "highlighted" : "" %>"></i>
+					</div>
+			</span>
+		</div>
+
+		<p class="comment-body"><%= link_to comment.body, comment_url(comment) %></p>
+
+		<span class="timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
+		<span class="controls">
+			<% if comment.user_id == current_user.id %>
+				<%= link_to "Delete", "#", method: :delete, class: "delete" %>
+			<% end %>
+		
+			<%= link_to "Reply", "#", class: "reply" %>
 		</span>
 	</div>
 
-	<p class="comment-body"><%= link_to comment.body, comment_url(comment) %></p>
-
-	<span class="timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
-	<span class="controls">
-		<% if comment.user_id == current_user.id %>
-			<%= link_to "Delete", comment_url(comment), method: :delete, data: { confirm: "Are you sure?" } %>
-		<% end %>
+	<div class="comment reply-form group hidden">
+		<form action="<%= comments_url %>" method="post" class="comment-reply">
 		
-		<%= link_to "Reply", new_comment_url(parent_id: comment) %>
-	</span>
+			<input
+				type="hidden"
+				name="authenticity_token"
+				value="<%= form_authenticity_token %>">
+		
+			<input 
+				type="hidden"
+				name="comment[parent_id]"
+				value="<%= comment.id %>">
+		
+			<input
+				type="hidden"
+				name="comment[article_id]"
+				value="<%= comment.article_id %>">
+		
+			<input
+				type="hidden"
+				name="comment[user_id]"
+				value="<%= current_user.id %>">
+		
+			<label for="comment_body">Comment as <%= current_user.username%>:</label>
+			<br>
+			<textarea
+				id="comment_body"
+				name="comment[body]"
+				value="<%= comment.body %>"
+				placeholder="pithy response..."></textarea>
+			<br>
+			<input type="Submit" value="New Comment">
+		</form>
+	</div>
 </div>

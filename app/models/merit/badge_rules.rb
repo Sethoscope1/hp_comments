@@ -28,6 +28,22 @@ module Merit
       
       grant_on 'comments#downvote', badge: 'First Burn!', model_name: "user"
       
+      grant_on 'comments#upvote', badge: 'Baby Booster!', model_name: "user"
+      
+      grant_on 'comments#upvote', badge: 'Popular Poster', to: :user do |comment|
+        
+        sum = CommentFavorite.where(comment_id: comment.id).map { |comment_fav| comment_fav.value.to_i }.sum
+        sum > 2
+      end
+      
+      grant_on ['comments#upvote', 'comments#downvote'], badge: 'Controvesy!', to: :user do |comment|
+        comment = CommentFavorite.where(comment_id: comment.id)
+        ups = comment.select { |comment| comment.value == 1 }.count
+        downs = comment.select { |comment| comment.value == -1}.count
+        
+        ups > 5 && downs > 5
+      end
+      
       # grant_on 'users#create', badge: 'First Steps', to: :user do |user|
   #       user.username.present? 
   #     end
