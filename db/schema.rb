@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20140309012021) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "articles", ["author_id"], :name => "index_articles_on_author_id", :unique => true
+  add_index "articles", ["author_id"], :name => "index_articles_on_author_id"
 
   create_table "badges_sashes", :force => true do |t|
     t.integer  "badge_id"

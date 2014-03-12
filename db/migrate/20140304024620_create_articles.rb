@@ -8,6 +8,6 @@ class CreateArticles < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :articles, :author_id, unique: true
+    add_index :articles, :author_id
   end
 end
