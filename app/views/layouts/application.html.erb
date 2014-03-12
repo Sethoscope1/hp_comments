@@ -24,10 +24,16 @@
 			<%= yield %>
 		</div>
 		
-		<div class="span3" id="achievements">
-			<h2>ACHIEVEMENT CHEAT SHEET</h2>
+		<div class="span3 achievements" id="achievements">
+			<div class="won">
+				<h3>Cheat Sheet</h3>
 			
-			
+				<% Merit::Badge.keys.each do |key|%>
+					<div class="clues">
+						<li><p class="to-do"><%= Merit::Badge[key][:description] %></p></li>
+					</div>			
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

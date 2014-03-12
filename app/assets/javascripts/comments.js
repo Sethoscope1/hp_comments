@@ -3,9 +3,6 @@
 
 //REFACTOR UP/DOWNVOTING//
 
-
-
-
 $(document).ready(function(){
 	
 	

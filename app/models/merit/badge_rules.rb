@@ -28,12 +28,18 @@ module Merit
       
       grant_on 'comments#downvote', badge: 'First Burn!', model_name: "user"
       
-      grant_on 'comments#upvote', badge: 'Baby Booster!', model_name: "user"
+      grant_on 'comments#upvote', badge: 'Thumbs Up!', model_name: "user"
       
       grant_on 'comments#upvote', badge: 'Popular Poster', to: :user do |comment|
         
         sum = CommentFavorite.where(comment_id: comment.id).map { |comment_fav| comment_fav.value.to_i }.sum
-        sum > 2
+        sum > 5
+      end
+      
+      grant_on 'comments#upvote', badge: 'High Fiver!', to: :user do |comment|
+        
+        sum = CommentFavorite.where(comment_id: comment.id).map { |comment_fav| comment_fav.value.to_i }.sum
+        sum > 5
       end
       
       grant_on ['comments#upvote', 'comments#downvote'], badge: 'Controvesy!', to: :user do |comment|
