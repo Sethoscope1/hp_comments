@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140309012021) do
+ActiveRecord::Schema.define(:version => 20140315175238) do
+
+  create_table "achievement_observers", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -41,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20140309012021) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
+    t.integer  "article_id"
   end
 
   add_index "comment_favorites", ["comment_id"], :name => "index_comment_favorites_on_comment_id"
@@ -53,6 +59,9 @@ ActiveRecord::Schema.define(:version => 20140309012021) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
+    t.integer  "score"
+    t.boolean  "upvoted"
+    t.boolean  "downvoted"
   end
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"

@@ -1,11 +1,37 @@
 <div class="welcome">
+	
 	<% if !current_user.nil? %>
 		<h2>Welcome</h2>
 		<h3 class="username"><%= current_user.username.capitalize %></h3>
 		<span class="logout"><%= button_to "Logout", session_url, method: :delete %></span>
 	<% else %>
-		<h2>LOG IN</h2>
-	<% end %>
+<h1>Create User</h1>
+
+<!-- 		<%= render "/users/form", user: @user %>
+
+		<hr>
+
+		<h1>Sign In</h1>
+
+		<%= render "/sessions/form", user: @user %>-->
+	<% end %> 
+	
+	
+	<div ng-controller="UserCtrl">
+		<h3>ANGULAR USER</h3>
+		<h3>{{ currentUser.username }}</h3>
+		
+		
+		<div class="won">
+			<h3>EARNED BADGES</h3>
+			<div ng-repeat="badge in badges">
+					<li><i class="fa fa-star-o"></i><span class="badge-name">{{ badge.badge.name }}</span></li>
+					<p class="completed">{{ badge.badge.description }}</p>
+			</div>
+
+			
+		</div>
+	</div>
 </div>
 
 <div class="achievements">

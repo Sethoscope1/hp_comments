@@ -1,21 +1,23 @@
 
 
-<!-- <div ng-controller="ArticleCtrl" class="article-index">
+<div ng-controller="ArticleIndexCtrl" class="article-index">
 	<h2>ARTICLES</h2>
 	<div id="articles-list">
-		<li ng-repeat="article in articles" class="article-preview">
-			<h3>{{ article.title }}</h3>
-			<img ng-src="{{article.image}}" class="photo">
-			<br>
-			<span>Comments ({{ article.comments.length }})<span>
-
-		</li>
+			<li ng-repeat="article in articles" class="article-preview">
+				<a href="/articles/{{article.id}}">
+					<h3>{{ article.title }}</h3>
+					<!-- <img ng-src="{{article.image}}" class="photo"> -->
+					<br>
+				<!-- <span>Comments ({{ article.comments.length }})<span> -->
+				</a>
+			</li>
+		</a>
 	</div>
-</div> -->
+</div>
 
-<div class="articles">
+<!-- <div class="articles">
 	<h1>ARTICLES</h1>
-
+	
 	<% @articles.each do |article| %>
 
 		<div class="article">
@@ -33,4 +35,4 @@
 	<hr>
 
 	<li><%= link_to "Create a New Article", new_article_path, class: 'new_article_link' %></li>
-</div>
+</div> -->

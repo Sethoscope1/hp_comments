@@ -1,10 +1,14 @@
 class CommentsController < ApplicationController
   
   def index
-    @comments = Comment.all
+    @comments = Comment.where(article_id: params[:article_id])
+    
+    @comments.each do |comment|
+      comment.update_attributes({upvoted: upvoted?(comment), downvoted: downvoted?(comment)})
+    end
 
     respond_to do |format|
-      format.html
+      format.html { render json: @comments }
       format.json { render json: @comments }
     end
   end
@@ -22,8 +26,8 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = Comment.new(params[:comment])
-    @comment.user = current_user
+    @comment = Comment.new(format_params(params))
+    @comment.score = 0
     if @comment.save
       render json: @comment
     else
@@ -31,35 +35,40 @@ class CommentsController < ApplicationController
     end
   end
   
-  def update
-    @comment = Comment.find(params[:id])
-    
-    if @comment.update_attributes(params[:comment])
-      flash.notice = "Comment updated!"
-  
-      redirect_to article_url(@comment)
-    end
-  end
+  # def update
+  #   @comment = Comment.find(params[:id])
+  #   
+  #   if @comment.update_attributes(params[:comment])
+  #     flash.notice = "Comment updated!"
+  # 
+  #     redirect_to article_url(@comment)
+  #   end
+  # end
   
   def upvote
     @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]
+    @comment = Comment.find(params[:id])
     if @comment_favorite
       @comment_favorite.update_attributes(value: (@comment_favorite.value == 1 ? 0 : 1))
+      @comment.update_attributes(score: get_value(@comment), upvoted: @comment_favorite.value == 1 ? true : false, downvoted: false)
     else
-      CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: 1)
+      @comment_favorite = CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: 1)
+      @comment.update_attributes(score: get_value(@comment), upvoted: true, downvoted: false)
     end
-    render json: @comment_favorite
+    render json: @comment
   end
   
   def downvote
     @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]
+    @comment = Comment.find(params[:id])
     if @comment_favorite
       @comment_favorite.update_attributes(value: (@comment_favorite.value == -1 ? 0 : -1))
-      render json: @comment_favorite
+      @comment.update_attributes(score: get_value(@comment), downvoted: @comment_favorite.value == -1 ? true : false, upvoted: false)
     else
       @comment_favorite = CommentFavorite.create!(user_id: current_user.id, comment_id: params[:id], value: -1)
-      render json: @comment_favorite
+      @comment.update_attributes(score: get_value(@comment), downvoted: true, upvoted: false)
     end
+    render json: @comment
   end
   
   def destroy

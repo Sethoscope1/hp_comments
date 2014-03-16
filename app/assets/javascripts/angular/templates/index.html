@@ -1,0 +1,30 @@
+<h2>Article <a href="#/article/new" class="btn btn-primary pull-right">New</a></h2>
+ 
+<div ng-show="articles.length == 0">
+    <hr />
+    <p>There are no articles here; something is likely broken</p>
+</div>
+ 
+<table class="table table-hover">
+
+    <tr ng-repeat="article in articles">
+        <td width="100%">
+					<a href="#/articles/{{article.id}}">
+						<img src="{{ article.image }}"></img>
+						{{article.title}}
+					</a>
+				
+				</td>
+ 
+        <td>
+					<!-- <a ng-click="destroy($index)" href="">
+						<i class="icon-trash"></i>
+					</a> -->
+				</td>
+				
+				<td>
+					<h3>{{article.comments}}
+					
+				</td>
+    </tr>
+</table>

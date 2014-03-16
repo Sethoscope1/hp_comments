@@ -2,8 +2,14 @@
 <h3>Comments:</h3>
 
 <div id="comments-index">
-
-	<%= nested_comments article.comments.arrange(:order => :created_at) %>
+	
+	
+	<div ng-controller="CommentCtrl">
+		
+		<li ng-repeat="comment in comments">{{ comment.body }}</li>
+		
+	</div>
+	<!-- <%= nested_comments article.comments.arrange(:order => :created_at) %>
 
 </div>
 

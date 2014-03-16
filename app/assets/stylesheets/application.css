@@ -48,7 +48,7 @@
 	background-color: #3498db;
 }
 
-#main {
+#main, #angular-main {
 	border-top: 10px solid #FF0041;
 }
 
@@ -124,6 +124,14 @@
 	color: #ff0041;
 }
 
+#comments-index { 
+	min-height: 120px;
+}
+
+#comment_body {
+	width: 280px;
+}
+
 .article {
 	border-bottom: 1px solid lightgrey;
 	margin-bottom: 15px;
@@ -141,6 +149,9 @@
 	margin: 0;
 }
 
+.article-body {
+	padding-top: 8px;
+}
 .logout {
 	text-align: center;
 }

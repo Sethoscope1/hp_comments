@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="hp_comments">
+<html ng-app="app">
 <head>
   <title>CommentsTest</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="container" ng-view>
+<div class="container">
 	
 	<div class="row">
 		<div class="span3" id="user-info">
@@ -18,13 +19,24 @@
 			
 		</div>
 		
-		
 
-		<div class="span5" id="main">
-			<%= yield %>
+
+		<div class="span5" ng-view id="angular-main">
+			IS THIS THE STUFFS
 		</div>
 		
+		
+
+		<!-- <div class="span5" id="main">
+			<%= yield %>
+		</div> -->
+			
 		<div class="span3 achievements" id="achievements">
+			<%= render "/users/achievements" %> 
+			
+		</div>
+		
+		<!-- <div class="span3 achievements" id="achievements">
 			<div class="won">
 				<h3>Cheat Sheet</h3>
 			
@@ -34,10 +46,9 @@
 					</div>			
 				<% end %>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
 </body>
 </html>
-

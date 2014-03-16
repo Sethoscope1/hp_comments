@@ -15,5 +15,10 @@
 //= require twitter/bootstrap
 //= require angular
 //= require angular-resource
+//= require angular-route.min.js
+//= require moment.min.js
+
+//= require /angular/app.js.erb
+//= require_tree ./angular
 //= require_tree .
 

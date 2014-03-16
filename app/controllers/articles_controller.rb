@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_filter :require_current_user!
+  before_filter :require_current_user!, except: [:show, :index]
   
   def index
     @articles = Article.includes(:comments).all
     respond_to do |format|
-      format.html
+      format.html { render json: @articles}
       format.json { render json: @articles}
     end
   end
@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
+    
+    render json: @article
   end
   
   def new

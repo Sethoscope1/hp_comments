@@ -1,7 +1,7 @@
 <div class="comment-pair">
 	<div class="comment group" data-comment-id="<%= comment.id %>">
 		<div class="comment-username">
-			<%= comment.user.username %>
+			<%= comment.user.username.capitalize %>
 			<span class="flair">( flair goes here )</span>
 			<span class="likes">
 				<div class="circle ">
@@ -12,7 +12,7 @@
 				<div class="votes group">
 					<i class="upvote fa fa-arrow-circle-up <%= upvoted?(comment) ? "highlighted" : "" %>"></i>
 					<i class="downvote fa fa-arrow-circle-down <%= downvoted?(comment) ? "highlighted" : "" %>"></i>
-					</div>
+				</div>
 			</span>
 		</div>
 
@@ -20,10 +20,6 @@
 
 		<span class="timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
 		<span class="controls">
-			<% if comment.user_id == current_user.id %>
-				<%= link_to "Delete", "#", method: :delete, class: "delete" %>
-			<% end %>
-		
 			<%= link_to "Reply", "#", class: "reply" %>
 		</span>
 	</div>

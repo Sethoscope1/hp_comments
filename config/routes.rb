@@ -2,26 +2,34 @@ HpComments::Application.routes.draw do
   
   resources :users, only: [:create, :new, :show, :index] do
     collection do
-      get :current
+      get 'currentUser'
+      get 'badges'
     end
   end
+  
+  resources :comment_favorites, only: [:index]
   
   resource :session, only: [:create, :destroy, :new]
   
   resources :articles do
-    resources :comments
+    resources :comments, defauts: { format: :json } do
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
+    end
   end
+  
+  resources :comment_favorites 
   
   resources :comments do
-    member do
-      post 'upvote'
-      post 'downvote'
-    end
-    
-    resources :comments
+    # member do
+    #   post 'upvote'
+    #   post 'downvote'
+    # end
   end
   
-  root to: "articles#index"
+  root to: "application#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

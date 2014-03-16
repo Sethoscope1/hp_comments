@@ -25,7 +25,7 @@ $(document).ready(function(){
 	
 	$comments.on("click", ".reply", function(event){
 		event.preventDefault();
-		var $reply_form = $(this).closest(".comment-pair").find(".reply-form")
+		var $reply_form = $(this).closest(".comment-pair").find(".reply-form");
 		$reply_form.toggleClass("hidden");
 	})
 	
@@ -44,13 +44,21 @@ $(document).ready(function(){
 				var parentClass = $(that).attr("class");
 				reply = format_comment(data);
 				$(that).closest(".comment-pair").append((reply).addClass("nested_comment"));
+				$reply_form.find("textarea").val("")
 			}
 		})
 	})
 	
 	$comments.on("click", ".delete", function(event){
-		event.preventDefault();
-		var id = $(this).closest("comment").attr("id");
+		// event.preventDefault();
+		// var $comment = $(this).closest("comment");
+		// var id = $comment.attr("id");
+		// url: "/comments/" + "id",
+		// type: "DELETE"
+		// success: function(data) {
+		// 	console.log("DELETED");
+		// 	$comment.delete();
+		// }
 	})
 	
 	
@@ -82,14 +90,4 @@ $(document).ready(function(){
 		
 		return comment.append(user_info, body.append(link), time, controls_info);
 	};
-	
-
-	
-	
-	
-	
-	
 })
-
-
-// href="http://localhost:3000/comments/new?parent_id=" 11

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to new_session_url
     else
       self.current_user = user
-      redirect_to articles_url
+      redirect_to "/"
     end
   end
   

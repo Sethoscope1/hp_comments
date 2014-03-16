@@ -22,24 +22,33 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render json: @user}
+      format.json { render json: @user }
     end
   end
   
   def index
-    @users = current_user
+    @users = User.all
     respond_to do |format|
-      format.html
-      format.json { render json: @users}
+      format.html { render json: @users }
+      format.json { render json: @users }
     end
   end
   
-  def current
+  def currentUser
     @user = current_user
     
     respond_to do |format|
-      format.html { render json: @user}
-      format.json { render json: @user}
+      format.html { render json: @user }
+      format.json { render json: @user }
+    end
+  end
+  
+  def badges
+    @badges = current_user.badges
+    
+    respond_to do |format|
+      format.html { render json: @badges }
+      format.json { render json: @badges }
     end
   end
   

@@ -23,4 +23,13 @@ module CommentsHelper
     
     true
   end
+  
+  def format_params(params)
+    formatted_params = {}
+    formatted_params[:body] = params[:body]
+    formatted_params[:article_id] = params[:articleId]
+    formatted_params[:user_id] = current_user.id
+    
+    formatted_params
+  end
 end
