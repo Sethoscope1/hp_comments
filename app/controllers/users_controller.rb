@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
   
   def currentUser
-    @user = current_user
+    @user = current_user || nil
     
     respond_to do |format|
       format.html { render json: @user }
@@ -44,14 +44,14 @@ class UsersController < ApplicationController
   end
   
   def badges
-    @badges = current_user.badges
+    @badges = current_user.badges || []
     
     respond_to do |format|
       format.html { render json: @badges }
       format.json { render json: @badges }
     end
   end
-  
+    
   private
   
   # def user_params

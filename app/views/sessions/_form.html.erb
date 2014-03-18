@@ -1,22 +1,30 @@
-<form action="<%= session_url %>" method="post">
+<form action="<%= session_url %>" method="post" class="form-horizontal">
 	<input
 		name="authenticity_token"
 		type="hidden"
 		value="<%= form_authenticity_token %>">
 		
-	<label for="user_username">Username</label>
-	<input
-		id="user_username"
-		name="user[username]"
-		type="text">
-	<br>
+	<div class="form-group">	
+		<label for="user_username">Username</label>
+		<input
+			id="user_username"
+			name="user[username]"
+			type="text"
+			placeholder="Enter Username"
+			class="form-control span3">
+		<br>
+	</div>
+		
+	<div class="form-group">	
+		<label for="user_password">Password</label>
+		<input
+			id="user_password"
+			name="user[password]"
+			type="password"
+			placeholder="Password"
+			class="form-control span3">
+		<br>
+	</div>
 	
-	<label for="user_password">Password</label>
-	<input
-		id="user_password"
-		name="user[password]"
-		type="password">
-	</br>
-	
-	<input type="submit" value="Login">
+	<input type="submit" value="Login" class="btn btn-default btn-block">
 </form>

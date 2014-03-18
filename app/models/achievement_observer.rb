@@ -13,11 +13,12 @@ class AchievementObserver < ActiveRecord::Base
     action = merit_action.action_method
     time = merit_action.created_at
       
-    Notification.create(
-      user: user, 
-      what: description,
-      where: "#{controller}##{action}",
-      when: time)
-    
+  #   Notification.create(
+  #     user: user, 
+  #     what: description,
+  #     where: "#{controller}##{action}",
+  #     when: time)
+  #   
+  # end
   end
 end

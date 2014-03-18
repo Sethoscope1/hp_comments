@@ -6,6 +6,10 @@ app.factory('User', function($resource) {
     return $resource('/users/:id/:action', {id: '@id'}, {currentUser: {method: "GET"}, badges: {method: "GET", isArray: true}});
 });
 
+app.factory('Badge', function($resource) {
+	return $resource('/badges');
+})
+
 app.factory('Article', function($resource) {
     return $resource('/articles/:id', {id: '@id'});
 });
@@ -15,8 +19,6 @@ app.factory('Comment', function($resource) {
 });
 
 app.factory('CommentFavorite', function($resource) {
-		return $resource('/articles/:articleId/comments/:commentId/:action', {articleId: '@articleId', commentId: '@commentId'}, {upvote: {method: "POST", isArray: true}});
+		return $resource('/articles/:articleId/comments/:commentId/:action', {articleId: '@articleId', commentId: '@commentId'});
 });
 
-
-// { "upvote": {method: 'PUT', action: 'upvote'}, "downvote": {method: 'PUT', action: 'downvote'} }

@@ -10,18 +10,11 @@
     <tr ng-repeat="article in articles">
         <td width="100%">
 					<a href="#/articles/{{article.id}}">
-						<img src="{{ article.image }}"></img>
+						<img ng-src="{{ article.image }}"></img>
 						{{article.title}}
-					</a>
-				
+					</a>	
 				</td>
- 
-        <td>
-					<!-- <a ng-click="destroy($index)" href="">
-						<i class="icon-trash"></i>
-					</a> -->
-				</td>
-				
+			
 				<td>
 					<h3>{{article.comments}}
 					

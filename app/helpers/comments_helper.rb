@@ -11,6 +11,7 @@ module CommentsHelper
   end
   
   def upvoted?(comment)
+    return false unless current_user
     favorite = CommentFavorite.where(user_id: current_user.id, comment_id: comment.id)[0]
     return false if favorite.nil? || favorite.value != 1
     
@@ -18,6 +19,7 @@ module CommentsHelper
   end
   
   def downvoted?(comment)
+    return false unless current_user
     favorite = CommentFavorite.where(user_id: current_user.id, comment_id: comment.id)[0]
     return false if favorite.nil? || favorite.value != -1
     

@@ -1,14 +1,12 @@
 
-/////--- TODOS ---/////
-
-//REFACTOR UP/DOWNVOTING//
+/////--- TODOS-REFACTOR UP/DOWNVOTING---/////
 
 $(document).ready(function(){
 	
-	
-	/////--- Comment ---/////
+	/////--- Comments ---/////
 	
 	/// UPVOTE ///
+	
 	var $comments = $("#comments-index")
 	var $upvote = $(".upvote")
 	

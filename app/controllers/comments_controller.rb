@@ -35,15 +35,16 @@ class CommentsController < ApplicationController
     end
   end
   
-  # def update
-  #   @comment = Comment.find(params[:id])
-  #   
-  #   if @comment.update_attributes(params[:comment])
-  #     flash.notice = "Comment updated!"
-  # 
-  #     redirect_to article_url(@comment)
-  #   end
-  # end
+  def update
+    @comment = Comment.find(params[:id])
+    
+    if @comment.update_attributes(format_params(params))
+      flash.notice = "Comment updated!"     
+      render json: @comment
+    else
+      render json: @comment.to_json, status: :unprocessable_entity
+    end
+  end
   
   def upvote
     @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]

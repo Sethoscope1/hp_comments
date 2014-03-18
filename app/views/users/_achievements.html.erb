@@ -1,1 +1,31 @@
-<h2>ANG CHEATS</h2>
+
+<div class="won" ng-controller="ModalCtrl">
+	<h3 class="sidebar-title">Cheat Sheet</h3>
+	
+	<div ng-repeat="badge in allBadges">
+		<a href="#" ng-click="open($event)">
+			<p class="to-do" data-badgeId="{{ badge.id }}">
+				{{ badge.name }}
+			</p>
+		</a>
+	</div>
+</div>
+
+		
+<div ng-controller="ModalCtrl">
+	<script type="text/ng-template" id="modal.html">
+	
+	<div ng-repeat="badge in allBadges" ng-if="badge.id == index" class="modal-main">
+		<h4>Achievement UNLOCKED!!</h4>
+		<img ng-src="{{ badge.custom_fields.image }}"></img>
+		<h3>{{ badge.name }}</h3>
+		<p>{{ badge.description }}</p>
+
+	</div>
+	
+  <div class="modal-footer">
+      <button class="btn btn-warning" ng-click="cancel()">Nice, Dude!</button>
+  </div>
+	
+	</script>
+</div>

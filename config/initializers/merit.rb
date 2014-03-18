@@ -38,41 +38,41 @@ end
     id: 1,
     name: "First Steps",
     description: "Register for a new account",
-    custom_fields: { image: "http://img.youtube.com/vi/0yp_YH3rZFw/0.jpg" }
+    custom_fields: { image: "http://i.imgur.com/k815a.gif" }
   }, {
     id: 2, 
     name: "First Vote", 
-    description: "Upvote a comment you like!",
-    custom_fields: { image: "http://news.xinhuanet.com/english/2008-11/05/xin_1921105050933312147043.jpg"}       
+    description: "Up-or-downvote a comment!",
+    custom_fields: { image: "http://media.giphy.com/media/beD4xGgArcMXC/giphy.gif"}       
   }, {
     id: 3,
     name: "First Burn!", 
-    description: "Downvote your first comment!",
-    custom_fields: { image: "#" }      
+    description: "Downvote your first comment",
+    custom_fields: { image: "http://i.imgur.com/5Jwa5.gif" }      
   }, {
     id: 4, 
     name: "Thumbs Up!",
-    custom_fields: { image: "#"},
+    custom_fields: { image: "http://i3.kym-cdn.com/entries/icons/original/000/012/982/post-19715-Brent-Rambo-gif-thumbs-up-imgu-L3yP.gif"},
     description: "Upvote your first comment!"
   }, {
     id: 5, 
     name: "Popular Poster",
-    custom_fields: { image: "#"},
+    custom_fields: { image: "http://www.gurl.com/wp-content/uploads/2013/06/IM-SO-POPULAR.gif"},
     description: "Write a post with a score of 5"
   }, {
     id: 6,
     name: "Controversy",
-    custom_fields: { image: "#"},
+    custom_fields: { image: "http://media2.giphy.com/media/BBmnomPMF2slW/giphy.gif"},
     description: "Write a post with 5 upvotes and 5 downvotes"  
   } , {
     id: 7,
     name: "High Fiver!",
-    custom_fields: { image: "#"},
+    custom_fields: { image: "http://31.media.tumblr.com/tumblr_m4t4j8w2iG1qdlh1io1_400.gif"},
     description: "Give 5 Upvotes"
   }, {
     id: 8,
-    name: "Down Low!",
-    custom_fields: { image: "#"},
+    name: "Awww, snap!!",
+    custom_fields: { image: "http://31.media.tumblr.com/tumblr_m0dpjlWlnn1rqfhi2o1_500.gif"},
     description: "Give 5 Downvotes"  
     }
 ].each do |badge_attrs|

@@ -1,22 +1,24 @@
+<a href="#">
+	Back to Front Page
+</a>
+
 <div>
 	<div class="media-heading">
 		<h2>{{ article.title }}</h2>
-		<image src="{{ article.image }}">
+		
+		<image ng-src="{{ article.image }}">
 	</div>
 <hr/>
 
-</div>
-
-<div ng-controller="UserCtrl">
-	<h2 ng-click="getBadges()">click me</h2>
 </div>
  
 <div ng-controller="CommentCtrl">
   <form ng-submit="save()">
 
       <textarea ng-model="body" rows="4" style="width: 100%;" placeholder="Join the conversation"></textarea>	
-      <div ng-repeat="error in errors.body" class="alert alert-error"><strong>Body</strong> {{ error }}</div>
-      <button type="submit" class="btn btn-primary btn-large">Post!</button>
+      <div ng-repeat="error in errors.body" class="alert alert-error">
+				<strong>Body</strong> {{ error }}</div>
+      	<button type="submit" class="btn btn-primary btn-large">Post!</button>
   </form>
 	
 
@@ -24,7 +26,7 @@
   <div class="media comment" ng-repeat="comment in comments">
     <div class="media">
       <div class="media-body">
-				<span class="likes">
+				<span class="likes group">
 					<div class="circle ">
 						<div class="vote-count">
 							{{ comment.score }}
@@ -37,7 +39,7 @@
 				</span>
 				
 				<h4 class="media-heading">
-					<!-- {{ getUserName(comment.user_id) }} -->
+					{{ getUserName(comment.user_id) }}
 				</h4>
 				
         <p>

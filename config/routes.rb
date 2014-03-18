@@ -22,6 +22,12 @@ HpComments::Application.routes.draw do
   
   resources :comment_favorites 
   
+  resources :badges do
+    collection do
+      get 'allBadges'
+    end
+  end
+  
   resources :comments do
     # member do
     #   post 'upvote'

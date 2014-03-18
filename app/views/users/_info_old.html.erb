@@ -1,0 +1,30 @@
+<!-- <div class="achievements">
+	
+	<div class="badges">
+
+		<% if !flash.notice.nil? %>
+			<h3>Notices:</h3>
+			<%= flash.notice %></p>
+		<% end %>
+
+		<% if flash[:error] %>
+			<h3>Errors</h3>
+			<% flash[:error].each do |message| %>
+				<%= message %>
+			<% end %>
+		<% end %>
+	
+		<h3>Achievements</h3>
+	
+		<% if current_user %>
+			<% current_user.badges.each do |badge| %>
+			<div class="won">
+				<li><i class="fa fa-star-o"></i><span class="badge-name"><%= badge.name %></span></li>
+				<li><p class="completed"><%= badge.description%></li></p>
+			</div>
+			<% end %>
+		<% else %>
+				<li>You have achieved nothing</li>
+		<% end %>
+	</div>
+</div> -->

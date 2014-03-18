@@ -18,35 +18,18 @@
 			<%= render "/users/info" %>
 			
 		</div>
-		
-
 
 		<div class="span5" ng-view id="angular-main">
-			IS THIS THE STUFFS
+			If you can see this, AngularJS and I are in the biggest fight ever.
 		</div>
-		
-		
-
+			
 		<!-- <div class="span5" id="main">
 			<%= yield %>
 		</div> -->
 			
 		<div class="span3 achievements" id="achievements">
-			<%= render "/users/achievements" %> 
-			
+			<%= render "/users/achievements" %> 	
 		</div>
-		
-		<!-- <div class="span3 achievements" id="achievements">
-			<div class="won">
-				<h3>Cheat Sheet</h3>
-			
-				<% Merit::Badge.keys.each do |key|%>
-					<div class="clues">
-						<li><p class="to-do"><%= Merit::Badge[key][:description] %></p></li>
-					</div>			
-				<% end %>
-			</div>
-		</div> -->
 	</div>
 </div>
 
