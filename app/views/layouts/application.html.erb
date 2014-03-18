@@ -5,12 +5,32 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
+	
+	<div class="header">
+		<a href="/#/">
+			<h1>ACHIEVEMENT UNLOCKER</h1>
+			<h2>HuffPost Edition</h2>
+		</a>
+	</div>
+	
+	<div class="hero-unit">
+		<h1>What's this all about?</h1>
+		
+		<p>Applying video game style achievements to your comment system could both encourage users to be more participative, and give you the opportunity to offor awards to encourage different kinds of conversations:</p>
+		
+		<li>Controvertial opinions (lots of up-and-downvotes)</li>
+		<li>Longer posts</li>
+		<li>Ongoing conversations</li>
+		<li>Popular opinions</li>
+	</div>
 	
 	<div class="row">
 		<div class="span3" id="user-info">
@@ -19,7 +39,7 @@
 			
 		</div>
 
-		<div class="span5" ng-view id="angular-main">
+		<div class="span6" ng-view id="angular-main">
 			If you can see this, AngularJS and I are in the biggest fight ever.
 		</div>
 			

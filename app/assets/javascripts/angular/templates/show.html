@@ -2,24 +2,29 @@
 	Back to Front Page
 </a>
 
-<div>
-	<div class="media-heading">
-		<h2>{{ article.title }}</h2>
-		
-		<image ng-src="{{ article.image }}">
-	</div>
+<div class="media">
+		<h2 class="media-heading">{{ article.title }}</h2>
+		<image ng-src="{{ article.image }}" class="media-object"></img>
+		<div class="media-body">
+			<p>{{ article.body }}</p>
+		</div>
+</div>
 <hr/>
 
 </div>
  
 <div ng-controller="CommentCtrl">
-  <form ng-submit="save()">
+  <form ng-submit="save()" ng-show="currentUser">
 
       <textarea ng-model="body" rows="4" style="width: 100%;" placeholder="Join the conversation"></textarea>	
       <div ng-repeat="error in errors.body" class="alert alert-error">
-				<strong>Body</strong> {{ error }}</div>
+				<strong>Body</strong> {{ body }}</div>
       	<button type="submit" class="btn btn-primary btn-large">Post!</button>
   </form>
+	
+	<div ng-show="!currentUser">
+		<h4>Please sign in if you'd like to submit a comment!</h4>
+	</div>
 	
 
 	
@@ -32,7 +37,7 @@
 							{{ comment.score }}
 						</div>
 					</div>
-					<div class="votes group">
+					<div class="votes group" ng-show="!currentUser">
 						<i class="upvote fa fa-arrow-circle-up" ng-class="{highlighted: comment.upvoted}" ng-click="upvote(comment)"></i>
 						<i class="downvote fa fa-arrow-circle-down" ng-class="{highlighted: comment.downvoted}" ng-click="downvote(comment)"></i>
 					</div>

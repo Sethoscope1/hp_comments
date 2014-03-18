@@ -31,6 +31,10 @@
   clear: both;
 }
 
+p {
+	text-indent: 20px;
+}
+
 
 /*#main ul, #achievements ul, #user-info ul {
 	list-style-type: none;
@@ -114,14 +118,18 @@
 	border: none;
 	border-bottom: 1px solid #3498db;
 }*/
-
+.container {
+	margin: auto;
+}
+.header {
+	text-align: center;
+}
 .modal-content {
 	text-align: center;
 }
 
 .modal-content img {
 	max-height: 250px;
-	position: static;
 }
 
 .modal-content h3 {

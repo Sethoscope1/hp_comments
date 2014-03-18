@@ -9,7 +9,6 @@ class UsersController < ApplicationController
       redirect_to articles_url
     else
       flash[:error] = @user.errors.full_messages 
-      redirect_to new_session_url
     end
   end
   

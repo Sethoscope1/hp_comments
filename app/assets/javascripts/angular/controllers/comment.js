@@ -11,7 +11,11 @@ angular.module('app').filter('fromNow', function() {
 app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, $routeParams, $location) {
     $scope.comments = Comment.query({articleId: $routeParams.id});		
 		$scope.currentUser = User.currentUser({ action: 'currentUser' });
-	
+		
+		console.log("CURRENT USER:")
+
+		console.log( $scope.currentUser )
+		console.log( $scope.currentUser )
 		var userIndex = User.query();
 
     $scope.save = function() {
