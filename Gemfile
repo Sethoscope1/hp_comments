@@ -17,7 +17,7 @@ gem 'angularjs-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
-# gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails',   '~> 3.2.3'
 
 group :development do
   gem 'binding_of_caller'
