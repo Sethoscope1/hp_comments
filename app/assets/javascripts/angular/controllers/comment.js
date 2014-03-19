@@ -73,11 +73,9 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 					return !(badge["badge"]["id"] in oldIds)
 				});	
 				
-				_(newBadges).each(function(badge, index) {			
-				  setTimeout(function(){
-						$scope.popup(badge["badge"]);
-						updateAchievements(badge);
-				  }, index * 5000);    
+				_.each(newBadges, function(badge) {
+					console.log(badge["badge"]["name"]);
+					$scope.popup(badge["badge"])
 				});
 				
 				$scope.badges = data;
@@ -103,10 +101,18 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 });
 
 var ModalPopupInstanceCtrl = function ($scope, $modalInstance, Badge, badge) {
+	// $scope.allBadges = Badge.query();
+	// $scope.index = event.target.attributes["data-badgeid"].value || {};
+	
+	// $scope.badge = badge;
+	// console.log(badge)
+	
 	$scope.badge = badge
+
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
+	
 };
 
 
