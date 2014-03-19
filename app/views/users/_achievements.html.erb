@@ -5,6 +5,9 @@
 		<h3 class="sidebar-title">Cheat Sheet</h3>	
 		<p>This are some of the achievements you can unlock-click to find out how!</p>
 	</header>
+	
+	<hr>
+	
 	<div ng-repeat="badge in allBadges">
 		<a href="#" ng-click="open($event)">
 			<p class="to-do" data-badgeId="{{ badge.id }}">

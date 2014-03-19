@@ -1,8 +1,8 @@
 
 <h1 class="article_title"><%= @article.title %></h1>
-
+<div class="article">
 <img src=<%= @article.image %>>
-
+</div>
 <p class="article_body"><%= @article.body %></p>
 
 <% if @article.id == current_user.id %>

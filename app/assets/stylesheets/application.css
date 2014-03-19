@@ -85,6 +85,7 @@ a, a:hover {
 
 .sidebar-title, #achievements header {
 	color: white;
+	text-align: center;
 }
 
 .btn {
@@ -219,7 +220,7 @@ a, a:hover {
 }
 
 .likes {
-	width: 80px;
+	width: 45px;
 	display: inline-block;
 	float: right;
 }
@@ -246,10 +247,6 @@ a, a:hover {
 .votes { 
 	margin: auto;
 	text-align: center;
-}
-
-.likes {
-	float: right;
 }
 
 i {
@@ -329,7 +326,7 @@ i {
 	font-size: 12px;
 }*/
 
-img {
+.article img {
 	width: 100%;
 	padding: 10px 0;
 }
