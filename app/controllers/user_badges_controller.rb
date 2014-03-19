@@ -4,7 +4,7 @@ class UserBadgesController < ApplicationController
     if current_user
       @user_badges = current_user.badges
     else
-      @user_badges = [{}]
+      @user_badges = []
     end
     
     render json: @user_badges

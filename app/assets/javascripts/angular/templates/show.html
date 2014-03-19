@@ -1,4 +1,4 @@
-<a href="#">
+<a class="btn" href="#">
 	Back to Front Page
 </a>
 
@@ -14,7 +14,7 @@
 </div>
  
 <div ng-controller="CommentCtrl">
-  <form ng-submit="save()">
+  <form ng-submit="save()" ng-hide="!currentUser.username">
 
       <textarea ng-model="body" rows="4" style="width: 100%;" placeholder="Join the conversation"></textarea>	
       <div ng-repeat="error in errors.body" class="alert alert-error">
@@ -22,7 +22,7 @@
       	<button type="submit" class="btn btn-primary btn-large">Post!</button>
   </form>
 	
-	<div>
+	<div ng-show="!currentUser.username">
 		<h4>Please sign in if you'd like to submit a comment!</h4>
 	</div>
 	
@@ -37,7 +37,7 @@
 							{{ comment.score }}
 						</div>
 					</div>
-					<div class="votes group">
+					<div class="votes group" ng-hide="!currentUser.username">
 						<i class="upvote fa fa-arrow-circle-up" ng-class="{highlighted: comment.upvoted}" ng-click="upvote(comment)"></i>
 						<i class="downvote fa fa-arrow-circle-down" ng-class="{highlighted: comment.downvoted}" ng-click="downvote(comment)"></i>
 					</div>

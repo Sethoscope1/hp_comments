@@ -10,15 +10,15 @@ angular.module('app').filter('fromNow', function() {
 
 app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, UserBadge, $routeParams, $location, $modal) {
     $scope.comments = Comment.query({articleId: $routeParams.id});		
-		$scope.currentUser = User.currentUser({ action: 'currentUser' });
-		$scope.badges = UserBadge.query();
-		
+  		$scope.currentUser = User.currentUser({ action: 'currentUser' });
+  		$scope.badges = UserBadge.query();
+  // 		
 		var refreshBadges = function() {
 			return UserBadge.query();
 		}
 
     $scope.save = function() {
-        var obj = new Comment({ body: $scope.body, articleId: $routeParams.id});
+      var obj = new Comment({ body: $scope.body, articleId: $routeParams.id});
  
         obj.$save(function(response) {
 	        $scope.comments.unshift(response);
@@ -32,7 +32,7 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 		var userIndex = User.query();
 		
 		$scope.getUserName = function(user_id) {
-
+			
 			var user = $.grep(userIndex, function(user){
 				return user.id == user_id;
 			})[0];
@@ -54,15 +54,9 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 			checkBadges();
 		};
 		
-		// var updateAchievements = function(badge) {
-	// 		var $achievements = $("#achievementContainer");
-	// 		($achievements).prepend("FOODS");
-	// 	};
-		
 		var checkBadges = function(){
-			console.log('up or down')
 			var oldBadges = $scope.badges;
-			var updatedBadges = User.badges({ action: "badges"});
+			var updatedBadges = UserBadge.query();
 			updatedBadges.$promise.then(function(data) {
 				var oldIds = {}
 				_.each(oldBadges, function(oldBadge){
@@ -74,7 +68,6 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 				});	
 				
 				_.each(newBadges, function(badge) {
-					console.log(badge["badge"]["name"]);
 					$scope.popup(badge["badge"])
 				});
 				
@@ -83,8 +76,6 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 		};
 	
 		$scope.popup = function(badge) {
-			console.log("BADGEY")		
-			console.log(badge)
 	    var modalInstance = $modal.open({
 	      templateUrl: 'modalpopup.html',
 	      controller: ModalPopupInstanceCtrl,

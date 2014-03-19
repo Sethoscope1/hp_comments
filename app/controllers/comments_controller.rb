@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     end
 
     respond_to do |format|
-      # format.html { render json: @comments }
+      format.html { render json: @comments }
       format.json { render json: @comments }
     end
   end

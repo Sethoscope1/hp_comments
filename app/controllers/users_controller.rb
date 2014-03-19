@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    
     respond_to do |format|
       format.html { render json: @users }
       format.json { render json: @users }
@@ -35,7 +36,10 @@ class UsersController < ApplicationController
   end
   
   def currentUser
-    @user = current_user || nil
+    @user = current_user 
+    if @user.nil?
+      @user = {}
+    end
     
     respond_to do |format|
       format.html { render json: @user }
@@ -51,10 +55,4 @@ class UsersController < ApplicationController
       format.json { render json: @badges }
     end
   end
-    
-  private
-  
-  # def user_params
-  #   params.require(:user)
-  # end
 end
