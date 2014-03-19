@@ -23,6 +23,7 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
         obj.$save(function(response) {
 	        $scope.comments.unshift(response);
 	        $scope.name = $scope.body = "";
+					checkBadges();
         }, function(response) {
           $scope.errors = response.data.errors;
         });
@@ -53,6 +54,11 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 			checkBadges();
 		};
 		
+		// var updateAchievements = function(badge) {
+	// 		var $achievements = $("#achievementContainer");
+	// 		($achievements).prepend("FOODS");
+	// 	};
+		
 		var checkBadges = function(){
 			console.log('up or down')
 			var oldBadges = $scope.badges;
@@ -70,13 +76,13 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 				_(newBadges).each(function(badge, index) {			
 				  setTimeout(function(){
 						$scope.popup(badge["badge"]);
+						updateAchievements(badge);
 				  }, index * 5000);    
 				});
 				
 				$scope.badges = data;
 			});
 		};
-		
 	
 		$scope.popup = function(badge) {
 			console.log("BADGEY")		

@@ -34,12 +34,14 @@ end
 #   Merit::Badge.create! attrs
 # end
 
-[{
-    id: 1,
-    name: "First Steps",
-    description: "Register for a new account",
-    custom_fields: { image: "http://i.imgur.com/k815a.gif" }
-  }, {
+[ {
+    id: 1, 
+    name: 'Prolific Poster', 
+    description: "Write 5 Comments",
+    custom_fields: { image: "http://media2.giphy.com/media/b55x0VFpFKm7S/giphy.gif"}       
+  },
+  
+  {
     id: 2, 
     name: "First Vote", 
     description: "Up-or-downvote a comment!",
