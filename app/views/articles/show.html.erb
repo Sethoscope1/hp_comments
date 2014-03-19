@@ -20,11 +20,7 @@
 	<%= render partial: "comments/index", locals: { article: @article } %>
 	
 	<div ng-controller="CommentCtrl">
-		here
-		
-		<input ng-model="COOKIE" type="text"></input>
-		
-		{{ COOKIE }}
+
 		<li ng-repeat="comment in comments">{{ comment.body }}</li>
 		
 	</div>

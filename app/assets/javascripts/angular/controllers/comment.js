@@ -8,15 +8,14 @@ angular.module('app').filter('fromNow', function() {
   }
 });
 
-app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, $routeParams, $location) {
+app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, $routeParams, $location, $modal) {
     $scope.comments = Comment.query({articleId: $routeParams.id});		
 		$scope.currentUser = User.currentUser({ action: 'currentUser' });
+		$scope.badges = User.badges({ action: 'badges' });
 		
-		console.log("CURRENT USER:")
-
-		console.log( $scope.currentUser )
-		console.log( $scope.currentUser )
-		var userIndex = User.query();
+		var refreshBadges = function() {
+			return User.badges({ action: 'badges'});
+		}
 
     $scope.save = function() {
         var obj = new Comment({ body: $scope.body, articleId: $routeParams.id});
@@ -27,7 +26,9 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, $
         }, function(response) {
           $scope.errors = response.data.errors;
         });
-    }
+    };
+		
+		var userIndex = User.query();
 		
 		$scope.getUserName = function(user_id) {
 
@@ -38,15 +39,75 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, $
 				return null;
 			}
 			return user.username;
-		}
+		};
 		
 		$scope.upvote = function(comment, $event) {
 			comment.$upvote({articleId: $routeParams.id, commentId: comment.id, action: 'upvote'}, function(response) {
 			})
+			checkBadges();
 		};
 		
 		$scope.downvote = function(comment, $event) {
 			comment.$downvote({articleId: $routeParams.id, commentId: comment.id, action: 'downvote'}, function(response) {	
 			})
-		}
+			checkBadges();
+		};
+		
+		var checkBadges = function(){
+			console.log('up or down')
+			var oldBadges = $scope.badges;
+			var updatedBadges = User.badges({ action: "badges"});
+			updatedBadges.$promise.then(function(data) {
+				var oldIds = {}
+				_.each(oldBadges, function(oldBadge){
+					oldIds[oldBadge["badge"]["id"]] = oldBadge;
+				});
+				
+				var newBadges = data.filter(function(badge){
+					return !(badge["badge"]["id"] in oldIds)
+				});	
+				
+				_.each(newBadges, function(badge) {
+					console.log(badge["badge"]["name"]);
+					$scope.popup(badge["badge"])
+				});
+				
+				$scope.badges = data;
+			});
+		};
+		
+	
+		$scope.popup = function(badge) {
+			console.log("BADGEY")		
+			console.log(badge)
+	    var modalInstance = $modal.open({
+	      templateUrl: 'modalpopup.html',
+	      controller: ModalPopupInstanceCtrl,
+				badge: badge,
+				backdrop: true,
+				windowClass: "modal group",
+	      resolve: {
+					badge: function() {
+						return badge;
+					}
+	      }
+	    });	
+		};
 });
+
+var ModalPopupInstanceCtrl = function ($scope, $modalInstance, Badge, badge) {
+	// $scope.allBadges = Badge.query();
+	// $scope.index = event.target.attributes["data-badgeid"].value || {};
+	
+	// $scope.badge = badge;
+	// console.log(badge)
+	
+	$scope.badge = badge
+
+	$scope.cancel = function() {
+		$modalInstance.dismiss('cancel');
+	};
+	
+};
+
+

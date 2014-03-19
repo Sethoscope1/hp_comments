@@ -31,52 +31,30 @@ module Merit
       grant_on 'comments#upvote', badge: 'Thumbs Up!', model_name: "user"
       
       grant_on 'comments#upvote', badge: 'Popular Poster', to: :user do |comment|
-        
         sum = CommentFavorite.where(comment_id: comment.id).map { |comment_fav| comment_fav.value.to_i }.sum
         sum > 5
       end
       
-      grant_on 'comments#upvote', badge: 'High Fiver!', to: :user do |comment|
-        
+      grant_on 'comments#upvote', badge: 'High Fiver!', to: :user do |comment|    
         sum = CommentFavorite.where(comment_id: comment.id).map { |comment_fav| comment_fav.value.to_i }.sum
         sum > 5
       end
       
       grant_on ['comments#upvote', 'comments#downvote'], badge: 'Controvesy!', to: :user do |comment|
-        comment = CommentFavorite.where(comment_id: comment.id)
+       comment = CommentFavorite.where(comment_id: comment.id)
         ups = comment.select { |comment| comment.value == 1 }.count
         downs = comment.select { |comment| comment.value == -1}.count
         
-        ups > 5 && downs > 5
+        (ups > 5) && (downs > 5)
       end
       
-      # grant_on 'users#create', badge: 'First Steps', to: :user do |user|
-  #       user.username.present? 
-  #     end
+      grant_on 'comments#create', badge: 'Thoughtful Poster', to: :user do |comment|
+        comment.body.split(" ").length > 50
+      end
       
-
-      # If it creates user, grant badge
-      # Should be "current_user" after registration for badge to be granted.
-      # grant_on 'users#create', badge: 'just-registered', to: :itself
-
-      # If it has 10 comments, grant commenter-10 badge
-      # grant_on 'comments#create', badge: 'commenter', level: 10 do |comment|
-      #   comment.user.comments.count == 10
-      # end
-
-      # If it has 5 votes, grant relevant-commenter badge
-      # grant_on 'comments#vote', badge: 'relevant-commenter',
-      #   to: :user do |comment|
-      #
-      #   comment.votes.count == 5
-      # end
-
-      # Changes his name by one wider than 4 chars (arbitrary ruby code case)
-      # grant_on 'registrations#update', badge: 'autobiographer',
-      #   temporary: true, model_name: 'User' do |user|
-      #
-      #   user.name.length > 4
-      # end
+      grant_on 'comments#create', badge: 'Future Novelist', to: :user do |comment|
+        comment.body.split(" ").length > 200
+      end
     end
   end
 end

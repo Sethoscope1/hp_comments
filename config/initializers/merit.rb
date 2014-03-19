@@ -61,7 +61,7 @@ end
     description: "Write a post with a score of 5"
   }, {
     id: 6,
-    name: "Controversy",
+    name: 'Controvesy!',
     custom_fields: { image: "http://media2.giphy.com/media/BBmnomPMF2slW/giphy.gif"},
     description: "Write a post with 5 upvotes and 5 downvotes"  
   } , {
@@ -74,6 +74,16 @@ end
     name: "Awww, snap!!",
     custom_fields: { image: "http://31.media.tumblr.com/tumblr_m0dpjlWlnn1rqfhi2o1_500.gif"},
     description: "Give 5 Downvotes"  
+    }, {
+    id: 9,
+    name: "Thoughtful Poster",
+    custom_fields: { image: "http://media.giphy.com/media/6HeXJ7cIieKDC/giphy.gif"},
+    description: "Write a 50 word comment"  
+    }, {
+    id: 10,
+    name: "Future Novelist",
+    custom_fields: { image: "http://media.giphy.com/media/138qDnykmEK4rm/giphy.gif"},
+    description: "Write a 200 word comment"  
     }
 ].each do |badge_attrs|
   Merit::Badge.create!(badge_attrs)

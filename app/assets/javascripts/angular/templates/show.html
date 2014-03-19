@@ -3,7 +3,7 @@
 </a>
 
 <div class="media">
-		<h2 class="media-heading">{{ article.title }}</h2>
+		<h3 class="media-heading">{{ article.title }}</h3>
 		<image ng-src="{{ article.image }}" class="media-object"></img>
 		<div class="media-body">
 			<p>{{ article.body }}</p>
@@ -14,7 +14,7 @@
 </div>
  
 <div ng-controller="CommentCtrl">
-  <form ng-submit="save()" ng-show="currentUser">
+  <form ng-submit="save()">
 
       <textarea ng-model="body" rows="4" style="width: 100%;" placeholder="Join the conversation"></textarea>	
       <div ng-repeat="error in errors.body" class="alert alert-error">
@@ -22,7 +22,7 @@
       	<button type="submit" class="btn btn-primary btn-large">Post!</button>
   </form>
 	
-	<div ng-show="!currentUser">
+	<div>
 		<h4>Please sign in if you'd like to submit a comment!</h4>
 	</div>
 	
@@ -37,7 +37,7 @@
 							{{ comment.score }}
 						</div>
 					</div>
-					<div class="votes group" ng-show="!currentUser">
+					<div class="votes group">
 						<i class="upvote fa fa-arrow-circle-up" ng-class="{highlighted: comment.upvoted}" ng-click="upvote(comment)"></i>
 						<i class="downvote fa fa-arrow-circle-down" ng-class="{highlighted: comment.downvoted}" ng-click="downvote(comment)"></i>
 					</div>
@@ -50,7 +50,7 @@
         <p>
 					{{comment.body}}
 					
-					{{comment.subtree}}
+					<!-- {{comment.subtree}} -->
 				</p>
         <h4 class="media-heading">
           <div class="pull-right" style="font-size: 12px;">
@@ -62,4 +62,22 @@
   </div>
 
   <hr/>
+</div>
+
+<div ng-controller="CommentCtrl">
+	<script type="text/ng-template" id="modalpopup.html">
+
+	<div class="modal-main">
+		<h4>Achievement UNLOCKED!!</h4>
+		<img ng-src="{{ badge.custom_fields.image }}"></img>
+		<h3>{{ badge.name }}</h3>
+		<p>{{ badge.description }}</p>
+
+	</div>
+
+  <div class="modal-footer">
+      <button class="btn btn-warning" ng-click="cancel()">Nice, Dude!</button>
+  </div>
+
+	</script>
 </div>

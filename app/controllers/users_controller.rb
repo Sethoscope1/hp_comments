@@ -6,10 +6,11 @@ class UsersController < ApplicationController
     
     if @user.save
       self.current_user = @user
-      redirect_to articles_url
     else
       flash[:error] = @user.errors.full_messages 
     end
+    
+    render layout: "application", nothing: true
   end
   
   def new

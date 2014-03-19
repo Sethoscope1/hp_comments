@@ -18,6 +18,7 @@
 //= require angular-route.min.js
 //= require moment.min.js
 //= require ui-bootstrap-tpls-0.9.0.min.js
+//= require underscore-min.js
 
 //= require /angular/app.js.erb
 //= require_tree ./angular

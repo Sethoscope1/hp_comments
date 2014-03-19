@@ -3,23 +3,20 @@
 <!-- <a href="#/article/new" class="btn btn-primary pull-right">New</a> -->
  
 <div ng-show="articles.length == 0">
-    <hr />
+    <hr/>
+
     <p>There are no articles here; something is likely broken</p>
 </div>
  
 <table class="table table-hover">
 
-    <tr ng-repeat="article in articles">
-        <td width="100%">
-					<a href="#/articles/{{article.id}}">
-						<img ng-src="{{ article.image }}"></img>
-						{{article.title}}
-					</a>	
-				</td>
-			
-				<td>
-					<h3>{{article.comments}}
-					
-				</td>
-    </tr>
+  <tr ng-repeat="article in articles">
+    <td width="100%">
+			<a href="#/articles/{{article.id}}">
+				<img ng-src="{{ article.image }}"></img>
+				<h3 class="media-heading">{{article.title}}</h3>
+			</a>	
+		</td>
+  </tr>
 </table>
+

@@ -13,8 +13,6 @@ $(document).ready(function(){
 	$comments.on("click", ".upvote", function(event){
 		event.preventDefault();
 		
-		console.log("click")
-		
 		var $comment = $(this).closest(".comment")
 		var comment_id = $comment.data("comment-id")
 		var $votes = $comment.find(".vote-count")
@@ -75,7 +73,6 @@ $(document).ready(function(){
 			url: "/comments/" + comment_id + "/downvote",
 			type: "POST",
 			success: function(data){
-				console.log(data)
 			}
 		})
 		
