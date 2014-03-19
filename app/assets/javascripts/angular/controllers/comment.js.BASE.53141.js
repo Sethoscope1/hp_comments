@@ -8,13 +8,13 @@ angular.module('app').filter('fromNow', function() {
   }
 });
 
-app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, UserBadge, $routeParams, $location, $modal) {
+app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, $routeParams, $location, $modal) {
     $scope.comments = Comment.query({articleId: $routeParams.id});		
 		$scope.currentUser = User.currentUser({ action: 'currentUser' });
-		$scope.badges = UserBadge.query();
+		$scope.badges = User.badges({ action: 'badges' });
 		
 		var refreshBadges = function() {
-			return UserBadge.query();
+			return User.badges({ action: 'badges'});
 		}
 
     $scope.save = function() {
@@ -23,7 +23,6 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
         obj.$save(function(response) {
 	        $scope.comments.unshift(response);
 	        $scope.name = $scope.body = "";
-					checkBadges();
         }, function(response) {
           $scope.errors = response.data.errors;
         });
@@ -54,11 +53,6 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 			checkBadges();
 		};
 		
-		// var updateAchievements = function(badge) {
-	// 		var $achievements = $("#achievementContainer");
-	// 		($achievements).prepend("FOODS");
-	// 	};
-		
 		var checkBadges = function(){
 			console.log('up or down')
 			var oldBadges = $scope.badges;
@@ -73,14 +67,16 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 					return !(badge["badge"]["id"] in oldIds)
 				});	
 				
-				_.each(newBadges, function(badge) {
-					console.log(badge["badge"]["name"]);
-					$scope.popup(badge["badge"])
+				_(newBadges).each(function(badge, index) {			
+				  setTimeout(function(){
+						$scope.popup(badge["badge"]);
+				  }, index * 5000);    
 				});
 				
 				$scope.badges = data;
 			});
 		};
+		
 	
 		$scope.popup = function(badge) {
 			console.log("BADGEY")		
@@ -89,7 +85,7 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 	      templateUrl: 'modalpopup.html',
 	      controller: ModalPopupInstanceCtrl,
 				badge: badge,
-				backdrop: 'true',
+				backdrop: true,
 				windowClass: "modal group",
 	      resolve: {
 					badge: function() {
@@ -101,13 +97,10 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 });
 
 var ModalPopupInstanceCtrl = function ($scope, $modalInstance, Badge, badge) {
-
 	$scope.badge = badge
-
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
-	
 };
 
 

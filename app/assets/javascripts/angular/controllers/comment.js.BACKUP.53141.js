@@ -8,13 +8,13 @@ angular.module('app').filter('fromNow', function() {
   }
 });
 
-app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, UserBadge, $routeParams, $location, $modal) {
+app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, $routeParams, $location, $modal) {
     $scope.comments = Comment.query({articleId: $routeParams.id});		
 		$scope.currentUser = User.currentUser({ action: 'currentUser' });
-		$scope.badges = UserBadge.query();
+		$scope.badges = User.badges({ action: 'badges' });
 		
 		var refreshBadges = function() {
-			return UserBadge.query();
+			return User.badges({ action: 'badges'});
 		}
 
     $scope.save = function() {
@@ -73,9 +73,17 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 					return !(badge["badge"]["id"] in oldIds)
 				});	
 				
+<<<<<<< HEAD
+				_(newBadges).each(function(badge, index) {			
+				  setTimeout(function(){
+						$scope.popup(badge["badge"]);
+						updateAchievements(badge);
+				  }, index * 5000);    
+=======
 				_.each(newBadges, function(badge) {
 					console.log(badge["badge"]["name"]);
 					$scope.popup(badge["badge"])
+>>>>>>> parent of bdd7694... Adds timeout to popups for multiples
 				});
 				
 				$scope.badges = data;
@@ -89,7 +97,7 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 	      templateUrl: 'modalpopup.html',
 	      controller: ModalPopupInstanceCtrl,
 				badge: badge,
-				backdrop: 'true',
+				backdrop: true,
 				windowClass: "modal group",
 	      resolve: {
 					badge: function() {
@@ -101,7 +109,12 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 });
 
 var ModalPopupInstanceCtrl = function ($scope, $modalInstance, Badge, badge) {
-
+	// $scope.allBadges = Badge.query();
+	// $scope.index = event.target.attributes["data-badgeid"].value || {};
+	
+	// $scope.badge = badge;
+	// console.log(badge)
+	
 	$scope.badge = badge
 
 	$scope.cancel = function() {

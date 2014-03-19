@@ -35,7 +35,17 @@ p {
 	text-indent: 20px;
 }
 
+span3 {
+	float: left;
+}
 
+span6 {
+	float: left;
+}
+
+a, a:hover {
+	color: black;
+}
 /*#main ul, #achievements ul, #user-info ul {
 	list-style-type: none;
 	margin-left: none !important;

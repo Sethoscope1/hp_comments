@@ -2,8 +2,8 @@
  
 var app = angular.module('app');
  
-app.controller('ModalCtrl', function($scope, User, $log, $modal, Badge) {
-	$scope.badges = User.badges({ action: 'badges' });
+app.controller('ModalCtrl', function($scope, User, UserBadge, $log, $modal, Badge) {
+	$scope.badges = UserBadge.query();
 	$scope.allBadges = Badge.query();
 
   $scope.open = function (event) {
@@ -11,7 +11,7 @@ app.controller('ModalCtrl', function($scope, User, $log, $modal, Badge) {
       templateUrl: 'modal.html',
       controller: ModalInstanceCtrl,
 			badges: $scope.badges,
-			backdrop: true,
+			backdrop: 'true',
 			windowClass: "modal group",
       resolve: {
 				event: function() {

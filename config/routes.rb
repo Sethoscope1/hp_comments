@@ -3,7 +3,7 @@ HpComments::Application.routes.draw do
   resources :users, only: [:create, :new, :show, :index] do
     collection do
       get 'currentUser'
-      get 'badges'
+      # get 'badges'
     end
   end
   
@@ -22,11 +22,17 @@ HpComments::Application.routes.draw do
   
   resources :comment_favorites 
   
-  resources :badges do
-    collection do
-      get 'allBadges'
-    end
-  end
+  resources :badges, only: [:index]
+    # collection do
+    #   get 'allBadges'
+    # end
+  # end
+  
+  resources :user_badges, only: [:index]
+  #   collection do
+  #     get 'userBadges'
+  #   end
+  # end
   
   resources :comments do
     # member do
