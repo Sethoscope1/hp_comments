@@ -17,20 +17,20 @@
 	<div class="header">
 		<a href="/#/">
 			<h1>ACHIEVEMENT UNLOCKER</h1>
-			<h2>HuffPost Edition</h2>
+			<h2 class="hp">HuffPost Edition</h2>
 		</a>
 	</div>
 	
 	<div class="row">
-		<div class="span3" id="user-info">
+		<div class="span3 padded" id="user-info">
 			<%= render "/users/info" %>
 		</div>
 
-		<div class="span6" ng-view id="angular-main">
+		<div class="span5 padded" ng-view id="angular-main">
 			If you can see this, AngularJS and I are in the biggest fight ever.
 		</div>	
 			
-		<div class="span3 achievements" id="achievements">
+		<div class="span3 achievements padded" id="achievements">
 			<%= render "/users/achievements" %> 	
 		</div>
 	</div>

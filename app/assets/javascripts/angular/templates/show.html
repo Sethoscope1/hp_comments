@@ -1,5 +1,7 @@
-<a class="btn" href="#">
-	Back to Front Page
+<a href="#" class="hi-lightered">
+	<hr>
+	<h4 ><i class="fa fa-arrow-circle-o-left hi-lightered"></i>Back to Front Page</h4>
+	<hr>
 </a>
 
 <div class="media">
@@ -15,7 +17,7 @@
  
 <div ng-controller="CommentCtrl">
   <form ng-submit="save()" ng-hide="!currentUser.username">
-
+			<h4 class="hi-lightered">Say Something:</h4>
       <textarea ng-model="body" rows="4" style="width: 100%;" placeholder="Join the conversation"></textarea>	
       <div ng-repeat="error in errors.body" class="alert alert-error">
 				<strong>Body</strong> {{ body }}</div>
@@ -23,15 +25,15 @@
   </form>
 	
 	<div ng-show="!currentUser.username">
-		<h4>Please sign in if you'd like to submit a comment!</h4>
+		<h4 class="hi-lightered">Please sign in if you'd like to submit a comment!</h4>
 	</div>
 	
 
 	
-  <div class="media comment" ng-repeat="comment in comments">
+  <div class="media comment round" ng-repeat="comment in comments">
     <div class="media">
       <div class="media-body">
-				<span class="likes group">
+				<div class="likes group">
 					<div class="circle ">
 						<div class="vote-count">
 							{{ comment.score }}
@@ -41,22 +43,24 @@
 						<i class="upvote fa fa-arrow-circle-up" ng-class="{highlighted: comment.upvoted}" ng-click="upvote(comment)"></i>
 						<i class="downvote fa fa-arrow-circle-down" ng-class="{highlighted: comment.downvoted}" ng-click="downvote(comment)"></i>
 					</div>
-				</span>
-				
-				<h4 class="media-heading">
-					{{ getUserName(comment.user_id) }}
-				</h4>
+				</div>
+
+				<div class="comment-info">
+					<h4 class="media-heading">
+						{{ getUserName(comment.user_id) }}
+					</h4>
+		
+			    <h4 class="media-heading">
+			      <div class="secondary" style="font-size: 12px;">
+			        {{ comment.created_at | fromNow }}
+			      </div>
+			    </h4>	
+				</div>
 				
         <p>
-					{{comment.body}}
-					
+					{{comment.body}}			
 					<!-- {{comment.subtree}} -->
 				</p>
-        <h4 class="media-heading">
-          <div class="pull-right" style="font-size: 12px;">
-            {{ comment.created_at | fromNow }}
-          </div>
-        </h4>
       </div>
     </div>
   </div>

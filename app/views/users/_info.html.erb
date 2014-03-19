@@ -1,12 +1,13 @@
 <div class="welcome">
 	
 	<% if !current_user.nil? %>
-		<h3 class="sidebar-title">Logged in as:</h3>
-		<h2><%= current_user.username.capitalize %></h2>
-		<span class="logout">
-			<%= button_to "Logout", session_url, {method: :delete, class: "btn btn-default btn-block"} %>
-		</span>
-
+		<header>
+			<h3 class="sidebar-title">Logged in as:</h3>
+			<h2><%= current_user.username.capitalize %></h2>
+			<span class="logout">
+				<%= button_to "Logout", session_url, {method: :delete, class: "btn btn-default btn-block"} %>
+			</span>
+		</header>
 	<% else %>
 	
 		<h3 class="sidebar-title">
@@ -31,26 +32,28 @@
 		<div class="achievements won">
 			<h3 class="sidebar-title">ACHIEVEMENTS</h3>
 		
-			<div ng-show="!badges.length">
+			<ul ng-show="!badges.length">
 				<li>
 					<span class="badge-name">
 						You have achieved nothing.
 					</span>
 				</li>
-			</div>
+			</ul>
 			
 			<div id="achievementContainer">
-				<div ng-repeat="badge in badges">
-						<li>
-							<i class="fa fa-star-o"></i>
-							<span class="badge-name">
-								{{ badge.badge.name }}
-							</span>
-						</li>
-						<p class="completed">
-							{{ badge.badge.description }}
-						</p>
-				</div>
+				<ul>
+					<div ng-repeat="badge in badges">
+							<li>
+								<i class="fa fa-star"></i>
+								<span class="badge-name">
+									{{ badge.badge.name }}
+								</span>
+							</li>
+							<p class="completed">
+								{{ badge.badge.description }}
+							</p>
+					</div>
+				</ul>
 			</div>		
 		</div>
 	</div>

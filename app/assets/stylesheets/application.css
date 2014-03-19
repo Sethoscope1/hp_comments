@@ -46,10 +46,55 @@ span6 {
 a, a:hover {
 	color: black;
 }
-/*#main ul, #achievements ul, #user-info ul {
+
+#main ul, #achievementContainer ul, #user-info ul {
 	list-style-type: none;
-	margin-left: none !important;
-}*/
+}
+
+#achievementContainer p {
+	text-indent: -10px;
+}
+
+.hp {
+	
+}
+
+.hi-lightered, .hi-lightered:hover {
+	color: #FF0041;
+}
+
+#user-info {
+	background-color: #5C81E8;
+	color: white;
+}
+
+#achievements {
+	background-color: #48EDD5;
+	color: #FF5947;
+}
+
+.padded {
+	padding: 10px;
+}
+
+.round {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.sidebar-title, #achievements header {
+	color: white;
+}
+
+.btn {
+	margin-top: 10px;
+}
+
+.comment {
+	padding: 10px;
+	border: 3px solid #0DFFA3;
+}
 
 /*#main li, #achievements li, #user-info li {
 	list-style: none;
@@ -173,6 +218,15 @@ a, a:hover {
 	min-height: 120px;
 }
 
+.likes {
+	width: 80px;
+	display: inline-block;
+	float: right;
+}
+
+.likes i {
+	margin: 0;
+}
 
 .circle {
 	width: 30px;
@@ -199,7 +253,19 @@ a, a:hover {
 }
 
 i {
-/*	margin-right: 8px;*/
+	margin-right: 8px;
+}
+
+.media-heading {
+	display: block;
+}
+
+.comment-info {
+	padding: 5px;
+}
+
+.secondary {
+	color: gray;
 }
 
 
@@ -263,14 +329,15 @@ i {
 	font-size: 12px;
 }*/
 
-/*.badge-name {
-	padding-left: 8px;
+img {
+	width: 100%;
+	padding: 10px 0;
 }
-*/
-/*.completed {
+
+.completed {
 	text-decoration: line-through;
 	font-size: 10px;
-}*/
+}
 
 
 

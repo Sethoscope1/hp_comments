@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   
   def index
-    @comments = Comment.where(article_id: params[:article_id])
+    @comments = Comment.where(article_id: params[:article_id]).sort_by { |comment| comment.created_at }.reverse
     
     @comments.each do |comment|
       comment.update_attributes({upvoted: upvoted?(comment), downvoted: downvoted?(comment)})
