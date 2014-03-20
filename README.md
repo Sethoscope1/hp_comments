@@ -12,13 +12,9 @@ http://hp-comments.herokuapp.com/#/
 
 ## What is it?
 
-<hr />
-
 It's a commenting & voting system with video game style 'achievements' to encourage meaningful interactions between the site's visitors.
 
 ### What's the Big Idea?
-
-<hr />
 
 Our online interactions tend to be incredibly short-lived. Whatever pithy, thoughtful, or humorous insight we make today isn't worth much tomorrow. 
 
@@ -46,9 +42,9 @@ Posting comments, giving, and recieving votes will earn you achievements. Along 
 ### New Technologies
 
 #### AngularJS
-I decided to give AngularJS a go, after I built a fully functioning site in Rails. Bad decision on my part, since I didn't think about how much work I was doing through Active Record associations. 
+I decided to give AngularJS a go, after I built a fully functioning site in Rails. Bad decision on my part, since I didn't think about how much heavy lifting I was doing through Active Record associations. 
 
-So I had to do a little wrangling to make it work. Where I had pre-fetched data (e.g., including comments when I hit the database for an article's info) in the Rails app, I had to make some painful choices with Angular - either adding columns to the database (as with comments' authors' names), or making multiple queries and then processing the data (articles and their comments).
+I had to do a little wrangling to make it work. Where I had pre-fetched a lot of data with :include (e.g., including comments when I hit the database for an article's info) in the Rails app, I had to make some painful choices with Angular - either adding columns to the database (as with comments' authors' names), or making multiple queries and then processing the data (articles and their comments).
 
 Some of these choices were painful, but it was a great learning process.
 
@@ -56,7 +52,9 @@ Some of these choices were painful, but it was a great learning process.
 I don't know how I avoided it for so long (I like styling), but this was my first time with Twitter Bootstrap as well. It's great once you realize that it's better to just go along with their design choices than to fuss with it.
 
 ### Todo
-Threaded Comments - This was up and running in Rails, but I think I could make it happen in Angular as well.
-More Badges! More GIFs!
-User Flair & Icons in the sidebar!
+Threaded Comments - I had this up and running in Rails, but will try to get it rolling again on angular.
+
+More Badges - I made some test cases to make sure everything works, but it could use some more robust interactions.
+
+User Flair in the sidebar! It would be cool if you could see which badges users had earned when they leave a comment.
 
