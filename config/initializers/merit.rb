@@ -73,17 +73,21 @@ end
     name: 'Controvesy!',
     custom_fields: { image: "http://media2.giphy.com/media/BBmnomPMF2slW/giphy.gif"},
     description: "Write a post with 5 upvotes and 5 downvotes"  
-  } , {
-    id: 7,
-    name: "High Fiver!",
-    custom_fields: { image: "http://31.media.tumblr.com/tumblr_m4t4j8w2iG1qdlh1io1_400.gif"},
-    description: "Give 5 Upvotes"
-  }, {
-    id: 8,
-    name: "Awww, snap!!",
-    custom_fields: { image: "http://31.media.tumblr.com/tumblr_m0dpjlWlnn1rqfhi2o1_500.gif"},
-    description: "Give 5 Downvotes"  
-    }, {
+  } , 
+  
+  # {
+  #   id: 7,
+  #   name: "High Fiver!",
+  #   custom_fields: { image: "http://31.media.tumblr.com/tumblr_m4t4j8w2iG1qdlh1io1_400.gif"},
+  #   description: "Give 5 Upvotes"
+  # }, {
+  #   id: 8,
+  #   name: "Awww, snap!!",
+  #   custom_fields: { image: "http://31.media.tumblr.com/tumblr_m0dpjlWlnn1rqfhi2o1_500.gif"},
+  #   description: "Give 5 Downvotes"  
+  #   }, 
+    
+    {
     id: 9,
     name: "Thoughtful Poster",
     custom_fields: { image: "http://media.giphy.com/media/6HeXJ7cIieKDC/giphy.gif"},
