@@ -7,7 +7,7 @@ module Merit
 
     def initialize
       
-      grant_on 'comments#create', badge: 'First Vote', to: :user do |comment|
+      grant_on 'comments#create', badge: 'First Post', to: :user do |comment|
         user = comment.user
         user.comments.count == 1
       end

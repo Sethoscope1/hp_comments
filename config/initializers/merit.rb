@@ -36,12 +36,12 @@ end
 
 [ 
   
-  # {
-  # id: 1,
-  # name: 'First Post',
-  # description: "Write your first comment!",
-  # custom_fields: { image: "http://media.giphy.com/media/xNBcChLQt7s9a/giphy.gif" }
-  # }, 
+  {
+  id: 1,
+  name: 'First Post',
+  description: "Write your first comment!",
+  custom_fields: { image: "http://media.giphy.com/media/xNBcChLQt7s9a/giphy.gif" }
+  }, 
   
   {
     id: 11, 
