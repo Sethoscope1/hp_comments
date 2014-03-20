@@ -204,7 +204,9 @@ input {
 	max-width: 100%;
 }
 
-
+.errors {
+	color: #48EDD5;
+}
 
 /*NESTED COMMENTS Styling- RAILS VERSION*/
 

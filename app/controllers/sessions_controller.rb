@@ -7,12 +7,11 @@ class SessionsController < ApplicationController
     )
     
     if user.nil?
-      flash[:error] = ["Invalid Credentials"]
-      redirect_to new_session_url
+      flash[:errors] = ["Invalid Credentials"]
     else
       self.current_user = user
-      redirect_to "/"
     end
+    redirect_to "/"
   end
   
   def destroy
