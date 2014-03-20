@@ -19,11 +19,11 @@
 
 /* Your stylesheets goes here... */
 
-@font-face {
+/*@font-face {
 	font-family: "OstrichSans";
 	src: url("/fonts/ostrich-sans-bold.ttf");
 	font-weight: bold;
-}
+}*/
 
 .group:after {
   content: "";
@@ -31,16 +31,13 @@
   clear: both;
 }
 
+.big-star {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
 p {
 	text-indent: 20px;
-}
-
-span3 {
-	float: left;
-}
-
-span6 {
-	float: left;
 }
 
 a, a:hover {
