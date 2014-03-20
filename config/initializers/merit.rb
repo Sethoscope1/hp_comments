@@ -34,14 +34,21 @@ end
 #   Merit::Badge.create! attrs
 # end
 
-[ {
+[ 
+  
+  # {
+  # id: 1,
+  # name: 'First Post',
+  # description: "Write your first comment!",
+  # custom_fields: { image: "http://media.giphy.com/media/xNBcChLQt7s9a/giphy.gif" }
+  # }, 
+  
+  {
     id: 11, 
     name: 'Prolific Poster', 
     description: "Write 5 Comments",
     custom_fields: { image: "http://media2.giphy.com/media/b55x0VFpFKm7S/giphy.gif"}       
-  },
-  
-  {
+  }, {
     id: 2, 
     name: "First Vote", 
     description: "Up-or-downvote a comment!",

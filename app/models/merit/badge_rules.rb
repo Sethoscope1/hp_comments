@@ -7,6 +7,11 @@ module Merit
 
     def initialize
       
+      grant_on 'comments#create', badge: 'First Vote', to: :user do |comment|
+        user = comment.user
+        user.comments.count == 1
+      end
+           
       grant_on ['comments#upvote', 'comments#downvote'], badge: 'First Vote'
       
       grant_on 'comments#downvote', badge: 'First Burn!', model_name: "user"

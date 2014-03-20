@@ -173,6 +173,7 @@ a, a:hover {
 }*/
 .container {
 	margin: auto;
+	padding-top: 40px;
 }
 .header {
 	text-align: center;
@@ -183,10 +184,6 @@ a, a:hover {
 
 .modal-content img {
 	max-height: 250px;
-}
-
-.modal-content h3 {
-	
 }
 
 .hidden {
@@ -262,36 +259,27 @@ i {
 	color: gray;
 }
 
+.article img {
+	width: 100%;
+	padding: 10px 0;
+}
 
-	/*OTHER STUFF*/
+img {
+	padding-bottom: 10px;
+}
 
-/*#comment_body {
-	width: 280px;
-}*/
+.completed {
+	text-decoration: line-through;
+	font-size: 10px;
+}
 
-/*.article {
-	border-bottom: 1px solid lightgrey;
-	margin-bottom: 15px;
-}*/
+input {
+	max-width: 100%;
+}
 
-/*.articles a { 
-	color: black;
-}*/
 
-/*.articles h1 {
-	text-align: center;
-}*/
 
-/*.articles h2 {
-	margin: 0;
-}*/
-
-/*.article-body {
-	padding-top: 8px;
-}*/
-/*.logout {
-	text-align: center;
-}*/
+	/*NESTED COMMENTS - RAILS VERSION*/
 
 /*.nested_comment .nested_comment .comment{
 	background-color: #D6EAF8;
@@ -308,52 +296,5 @@ i {
 	background-image: linear-gradient(#C2E0F4, white);
 }*/
 
-/*.likes {
-	width: 50px;
-	float: right;
-	text-align: center;
-}*/
-
-/*.won {
-	color: white;
-	padding: 0 15px;
-}*/
-
-/*.to-do {
-	font-size: 12px;
-}*/
-
-.article img {
-	width: 100%;
-	padding: 10px 0;
-}
-
-.completed {
-	text-decoration: line-through;
-	font-size: 10px;
-}
 
 
-
-/*.contols a {
-	padding: 5px;
-}*/
-
-input {
-	max-width: 100%;
-}
-
-/*form {
-	margin-left: 10px;
-}*/
-
-/*.sidebar-title {
-	color: white;
-	font-size: 24px;
-	text-align: center;
-}*/
-
-
-/*.badges {
-	padding: 0 20px 20px 20px;
-}*/
