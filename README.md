@@ -12,6 +12,7 @@ http://hp-comments.herokuapp.com/#/
 
 ## What is it?
 
+
 It's a commenting & voting system with video game style 'achievements' to encourage meaningful interactions between the site's visitors.
 
 ### What's the Big Idea?
@@ -24,16 +25,12 @@ While comments on political sites tend to be terse and one-sided, rewards could 
 
 ### Achievements 
 
-<hr />
-
 * Controversy achievements reward viewers that take more difficult positions
 * Thumbs Up & Aww, Snap!! badges encourage people to upvote and downvote posts
 * Popular Poster congratulates users who write comments that recieve a lot of votes from their peers
 * Future Novelist & Thoughtful Poster encourage longer, more thought out posts
 
 ### How To
-
-<hr />
 
 Log In by entering your name and a password. Navigate to the articles by clicking on the photos and headlines in the center of the screen.
 

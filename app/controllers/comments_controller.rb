@@ -7,10 +7,7 @@ class CommentsController < ApplicationController
       comment.update_attributes({upvoted: upvoted?(comment), downvoted: downvoted?(comment)})
     end
 
-    respond_to do |format|
-      format.html { render json: @comments }
-      format.json { render json: @comments }
-    end
+    render json: @comments
   end
   
   def show

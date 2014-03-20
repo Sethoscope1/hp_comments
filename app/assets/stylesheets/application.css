@@ -94,83 +94,10 @@ a, a:hover {
 	border: 3px solid #0DFFA3;
 }
 
-/*#main li, #achievements li, #user-info li {
-	list-style: none;
-}*/
-
-/*.highlighted {
-	color: red;
-}*/
-
-/*.container {
-	margin-top: 60px;
-}*/
-
-/*#achievements {
-	padding: 10px;
-}*/
-
-/*#user-info {
-	background-color: #3498db;
+.form-group {
+	padding: 5px;
 }
-*/
 
-/*#main, #angular-main {
-	border-top: 10px solid #FF0041;
-}
-*/
-
-/*#achievements {
-	background-color: #bdc3c7;
-	overflow: hidden;
-}*/
-
-/*.welcome {
-	background-color: #FF0041;
-	display: block;
-	padding: 20px 0;
-}*/
-
-/*.welcome h2 {
-	font-family: "OstrichSans";
-	font-style: italics;
-	font-size: 48px;
-	color: white;
-	text-align: center;
-}*/
-
-/*.achievements h3 {
-	font-size: 36px;
-}*/
-
-/*.achievemnts {
-	color: white;
-}*/
-
-
-/*.comment {
-	margin-top: 10px;
-	padding: 10px;
-	border: 1px solid #3498db;
-	width: 300px;
-}*/
-
-/*.reply-form {
-	margin-top: 0;
-	border-top: none;
-}*/
-
-/*.nested_comment {
-	margin-left: 15px;
-	margin-top: 0;
-}*/
-
-/*.nested_comment .comment {
-	background-color: #EBF5FB;
-	margin-top: 0;
-	border: none;
-	border-bottom: 1px solid #3498db;
-}*/
 .container {
 	margin: auto;
 	padding-top: 40px;
@@ -279,7 +206,31 @@ input {
 
 
 
-	/*NESTED COMMENTS - RAILS VERSION*/
+/*NESTED COMMENTS Styling- RAILS VERSION*/
+
+/*.comment {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid #3498db;
+	width: 300px;
+}*/
+
+/*.reply-form {
+	margin-top: 0;
+	border-top: none;
+}*/
+
+/*.nested_comment {
+	margin-left: 15px;
+	margin-top: 0;
+}*/
+
+/*.nested_comment .comment {
+	background-color: #EBF5FB;
+	margin-top: 0;
+	border: none;
+	border-bottom: 1px solid #3498db;
+}*/
 
 /*.nested_comment .nested_comment .comment{
 	background-color: #D6EAF8;

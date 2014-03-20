@@ -49,19 +49,6 @@ $(document).ready(function(){
 		})
 	})
 	
-	$comments.on("click", ".delete", function(event){
-		// event.preventDefault();
-		// var $comment = $(this).closest("comment");
-		// var id = $comment.attr("id");
-		// url: "/comments/" + "id",
-		// type: "DELETE"
-		// success: function(data) {
-		// 	console.log("DELETED");
-		// 	$comment.delete();
-		// }
-	})
-	
-	
 	var format_comment = function(data) {
 		var comments_url = "/comments/";
 

@@ -58,24 +58,25 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 			var oldBadges = $scope.badges;
 			var updatedBadges = UserBadge.query();
 			updatedBadges.$promise.then(function(data) {
-				var oldIds = {}
+				var oldIds = {};
 				_.each(oldBadges, function(oldBadge){
 					oldIds[oldBadge["badge"]["id"]] = oldBadge;
 				});
 				
 				var newBadges = data.filter(function(badge){
-					return !(badge["badge"]["id"] in oldIds)
+					return !(badge["badge"]["id"] in oldIds);
 				});	
 				
 				_.each(newBadges, function(badge) {
-					$scope.popup(badge["badge"])
+					popup(badge["badge"]);
+					updateAchievements(badge["badge"])
 				});
 				
 				$scope.badges = data;
 			});
 		};
 	
-		$scope.popup = function(badge) {
+		var popup = function(badge) {
 	    var modalInstance = $modal.open({
 	      templateUrl: 'modalpopup.html',
 	      controller: ModalPopupInstanceCtrl,
@@ -88,6 +89,14 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 					}
 	      }
 	    });	
+		};
+		
+		var updateAchievements = function(badge) {
+			var $achievements = $("#achievementContainer");
+			console.log($achievements);
+			
+			var $achievement = $("<div>").append($("<li>").append($("<i>", {class: "fa fa-star"}), $("<span>", {class: "badge-name"}).html(badge.name)), $("<p>", {class: "completed"}).html(badge.description));
+			$achievements.append($achievement);
 		};
 });
 
