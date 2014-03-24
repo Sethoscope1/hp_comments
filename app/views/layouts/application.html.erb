@@ -34,8 +34,26 @@
 			<%= render "/users/achievements" %> 	
 		</div>
 	</div>
+	
+	<div id="testing">
+		TESTING
+	</div>
+	
+	<%= subscribe_to "/comments/new" %>
 </div>
 
 </body>
 
 </html>
+
+
+<script>
+
+$(document).ready(function(){ 
+	PrivatePub.subscribe("/comments/new", function(data, channel) {
+		$("#comments").scope().update(data);
+		$("#comments").scope().$apply();
+	});
+})
+
+</script> 

@@ -10,24 +10,46 @@ angular.module('app').filter('fromNow', function() {
 
 app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, Badge, UserBadge, $routeParams, $location, $modal) {
     $scope.comments = Comment.query({articleId: $routeParams.id});		
-  		$scope.currentUser = User.currentUser({ action: 'currentUser' });
-  		$scope.badges = UserBadge.query();
-  // 		
+  	$scope.currentUser = User.currentUser({ action: 'currentUser' });
+  	$scope.badges = UserBadge.query();
+
 		var refreshBadges = function() {
 			return UserBadge.query();
 		}
 
+
+		PrivatePub.subscribe("comments/new", function(data, channel) {
+			console.log("THE HARD PART")
+		});
+		
+		
     $scope.save = function() {
       var obj = new Comment({ body: $scope.body, articleId: $routeParams.id});
- 
-        obj.$save(function(response) {
-	        $scope.comments.unshift(response);
-	        $scope.name = $scope.body = "";
-					checkBadges();
-        }, function(response) {
-          $scope.errors = response.data.errors;
-        });
+
+			// PRIVATE PUB VERSION
+			
+			obj.$save(function(response) {
+				console.log("Private Pub is handling this");
+				checkBadges();
+			}, function(response) {
+				$scope.errors = response.data.errors;
+			});
+			
+			// OLD VERSION
+			
+			// obj.$save(function(response) {
+			// 	$scope.comments.unshift(response);
+			// 	$scope.name = $scope.body = "";
+			// 	checkBadges();
+			// }, function(response) {
+			//           $scope.errors = response.data.errors;
+			// });
     };
+		
+		$scope.update = function(data) {
+			$scope.comments.unshift(data.comment);
+			console.log("IN THE UPDATE METHOD")
+		}
 		
 		var userIndex = User.query();
 		

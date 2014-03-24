@@ -24,8 +24,11 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.new(format_params(params))
-    @comment.score = 0
+    @comment.upvoted = true
+    @comment.score = 1
+    CommentFavorite.create({user_id: current_user.id, comment_id: @comment.id, value: 1})
     if @comment.save
+      PrivatePub.publish_to("/comments/new", comment: @comment)
       render json: @comment
     else
       render json: @comment.to_json, status: :unprocessable_entity
@@ -42,6 +45,10 @@ class CommentsController < ApplicationController
       render json: @comment.to_json, status: :unprocessable_entity
     end
   end
+  
+  # TO DO
+  # REFACTOR ME
+  # PLEASE
   
   def upvote
     @comment_favorite = CommentFavorite.where(user_id: current_user.id, comment_id: params[:id])[0]

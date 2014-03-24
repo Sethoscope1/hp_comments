@@ -1,3 +1,4 @@
+
 <a href="#" class="hi-lightered">
 	<hr>
 	<h4 ><i class="fa fa-arrow-circle-o-left hi-lightered"></i>Back to Front Page</h4>
@@ -15,8 +16,8 @@
 
 </div>
  
-<div ng-controller="CommentCtrl">
-  <form ng-submit="save()" ng-hide="!currentUser.username">
+<div ng-controller="CommentCtrl" id="comments">
+  <form ng-submit="save()" ng-hide="!currentUser.username" data-remote="true">
 			<h4 class="hi-lightered">Say Something:</h4>
       <textarea ng-model="body" rows="4" style="width: 100%;" placeholder="Join the conversation"></textarea>	
       <div ng-repeat="error in errors.body" class="alert alert-error">
@@ -29,8 +30,6 @@
 	</div>
 
 	<hr>
-	
-
 	
   <div class="media comment round" ng-repeat="comment in comments">
     <div class="media">
