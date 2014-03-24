@@ -6,5 +6,5 @@ test:
   secret_token: "secret"
 production:
   server: "https://hp-fayeserver.herokuapp.com/faye"
-  secret_token: "67e782ee18f0b89af9f3278666b8432dd9c80e5f09de68551d63278253cc23bb"
+  secret_token: "c56af685b89ef5fc6d3a240da13b2a60c0dd6da0f0fb0154bb620bdb7f6f00f8ba11c11b12ae67cbc6e9f0c989652d60e649a37f166f82c2c284de86f5a7cef2"
   signature_expiration: 3600 # one hour
