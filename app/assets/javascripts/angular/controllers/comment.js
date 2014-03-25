@@ -28,22 +28,26 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 
 			// PRIVATE PUB VERSION
 			
-			// obj.$save(function(response) {
-			// 	console.log("Private Pub is handling this");
-			// 	checkBadges();
-			// }, function(response) {
-			// 	$scope.errors = response.data.errors;
-			// });
+			// CHECK PRODUCTION ON HEROKU? 
+			// WORKING, BUT RETURNING:
+			// reserved1 = 1, reserved2 = 0, reserved3 = 0  
+			
+			obj.$save(function(response) {
+				console.log("Private Pub is handling this");
+				checkBadges();
+			}, function(response) {
+				$scope.errors = response.data.errors;
+			});
 			
 			// OLD VERSION
 			
-			obj.$save(function(response) {
-				$scope.comments.unshift(response);
-				$scope.name = $scope.body = "";
-				checkBadges();
-			}, function(response) {
-			          $scope.errors = response.data.errors;
-			});
+			// obj.$save(function(response) {
+			// 	$scope.comments.unshift(response);
+			// 	$scope.name = $scope.body = "";
+			// 	checkBadges();
+			// }, function(response) {
+			//           $scope.errors = response.data.errors;
+			// });
     };
 		
 		$scope.update = function(data) {
