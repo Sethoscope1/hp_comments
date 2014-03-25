@@ -28,27 +28,26 @@ app.controller('CommentCtrl', function($scope, Comment, User, CommentFavorite, B
 
 			// PRIVATE PUB VERSION
 			
-			obj.$save(function(response) {
-				console.log("Private Pub is handling this");
-				checkBadges();
-			}, function(response) {
-				$scope.errors = response.data.errors;
-			});
+			// obj.$save(function(response) {
+			// 	console.log("Private Pub is handling this");
+			// 	checkBadges();
+			// }, function(response) {
+			// 	$scope.errors = response.data.errors;
+			// });
 			
 			// OLD VERSION
 			
-			// obj.$save(function(response) {
-			// 	$scope.comments.unshift(response);
-			// 	$scope.name = $scope.body = "";
-			// 	checkBadges();
-			// }, function(response) {
-			//           $scope.errors = response.data.errors;
-			// });
+			obj.$save(function(response) {
+				$scope.comments.unshift(response);
+				$scope.name = $scope.body = "";
+				checkBadges();
+			}, function(response) {
+			          $scope.errors = response.data.errors;
+			});
     };
 		
 		$scope.update = function(data) {
 			$scope.comments.unshift(data.comment);
-			console.log("IN THE UPDATE METHOD")
 		}
 		
 		var userIndex = User.query();
